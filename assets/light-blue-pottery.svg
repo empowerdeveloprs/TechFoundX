@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="420" viewBox="0 0 420 420">
+
+  <rect width="420" height="420" fill="#dceff1"/>
+
+  <!-- soft pottery rings -->
+  <g fill="none" stroke="#176b86" stroke-width="3" opacity="0.16">
+    <circle cx="210" cy="210" r="150"/>
+    <circle cx="210" cy="210" r="126"/>
+    <circle cx="210" cy="210" r="102"/>
+  </g>
+
+  <!-- central flower -->
+  <g fill="none" stroke="#176b86" stroke-width="3" opacity="0.28">
+
+    <circle cx="210" cy="210" r="18"/>
+    <circle cx="210" cy="210" r="7"/>
+
+    <path d="
+      M210 192
+      C178 175 170 145 190 130
+      C207 117 222 135 210 168
+      C198 135 213 117 230 130
+      C250 145 242 175 210 192Z"/>
+
+    <path d="
+      M228 210
+      C245 178 275 170 290 190
+      C303 207 285 222 252 210
+      C285 198 303 213 290 230
+      C275 250 245 242 228 210Z"/>
+
+    <path d="
+      M210 228
+      C242 245 250 275 230 290
+      C213 303 198 285 210 252
+      C222 285 207 303 190 290
+      C170 275 178 245 210 228Z"/>
+
+    <path d="
+      M192 210
+      C175 242 145 250 130 230
+      C117 213 135 198 168 210
+      C135 222 117 207 130 190
+      C145 170 175 178 192 210Z"/>
+
+  </g>
+
+  <!-- surrounding pottery petals -->
+  <g fill="#65c9c3" opacity="0.18">
+
+    <circle cx="210" cy="70" r="7"/>
+    <circle cx="350" cy="210" r="7"/>
+    <circle cx="210" cy="350" r="7"/>
+    <circle cx="70" cy="210" r="7"/>
+
+    <circle cx="110" cy="110" r="5"/>
+    <circle cx="310" cy="110" r="5"/>
+    <circle cx="110" cy="310" r="5"/>
+    <circle cx="310" cy="310" r="5"/>
+
+  </g>
+
+  <!-- corner floral motifs -->
+  <g fill="none" stroke="#176b86" stroke-width="3" opacity="0.20">
+
+    <path d="
+      M20 70
+      C50 45 82 55 76 82
+      C70 106 43 94 25 112
+      C15 98 10 84 20 70Z"/>
+
+    <path d="
+      M400 70
+      C370 45 338 55 344 82
+      C350 106 377 94 395 112
+      C405 98 410 84 400 70Z"/>
+
+    <path d="
+      M20 350
+      C50 375 82 365 76 338
+      C70 314 43 326 25 308
+      C15 322 10 336 20 350Z"/>
+
+    <path d="
+      M400 350
+      C370 375 338 365 344 338
+      C350 314 377 326 395 308
+      C405 322 410 336 400 350Z"/>
+
+  </g>
+
+  <!-- subtle geometric diamonds -->
+  <g fill="none" stroke="#0a526a" stroke-width="2" opacity="0.15">
+    <path d="M0 210 L40 170 L80 210 L40 250 Z"/>
+    <path d="M420 210 L380 170 L340 210 L380 250 Z"/>
+    <path d="M210 0 L170 40 L210 80 L250 40 Z"/>
+    <path d="M210 420 L170 380 L210 340 L250 380 Z"/>
+  </g>
+
+  <!-- soft turquoise glaze -->
+  <g fill="#a4e3df" opacity="0.20">
+    <circle cx="65" cy="65" r="18"/>
+    <circle cx="355" cy="65" r="13"/>
+    <circle cx="65" cy="355" r="13"/>
+    <circle cx="355" cy="355" r="18"/>
+  </g>
+
+</svg>

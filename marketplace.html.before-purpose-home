@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EmpowerDevelopers Marketplace</title>
+  <meta name="description" content="EmpowerDevelopers — Global Technology Marketplace">
+  <link rel="stylesheet" href="marketplace.css">
+</head>
+
+<body>
+
+<header class="market-header">
+  <a href="marketplace.html" class="market-brand">
+    <img src="assets/logo.PNG" alt="EmpowerDevelopers">
+    <div>
+      <strong>EmpowerDevelopers</strong>
+      <span>Global Technology Marketplace</span>
+    </div>
+  </a>
+
+  <nav>
+    <a href="#products">Products</a>
+    <a href="#categories">Categories</a>
+    <a href="index.html">Company</a>
+  </nav>
+</header>
+
+
+<main>
+
+<section class="market-welcome">
+
+  <div class="welcome-copy">
+
+    <span class="eyebrow">GLOBAL TECHNOLOGY MARKETPLACE</span>
+
+    <h1>
+      Technology for
+      <span>commercial opportunity.</span>
+    </h1>
+
+    <p>
+      Discover, buy, license, sell and partner around
+      software products, digital platforms and technology solutions.
+    </p>
+
+  </div>
+
+
+  <div class="purpose-card">
+
+    <span class="eyebrow">WELCOME</span>
+
+    <h2>What brings you here?</h2>
+
+    <p>
+      Select your primary purpose. We will show only the
+      questions and marketplace experience relevant to you.
+    </p>
+
+    <div class="purpose-grid">
+
+      <button data-purpose="buyer">
+        <strong>Buy Technology</strong>
+        <span>Find technology products to acquire or use.</span>
+      </button>
+
+      <button data-purpose="license">
+        <strong>License Technology</strong>
+        <span>Find products available for commercial licensing.</span>
+      </button>
+
+      <button data-purpose="seller">
+        <strong>Sell / List</strong>
+        <span>Present your technology product for commercial opportunity.</span>
+      </button>
+
+      <button data-purpose="partner">
+        <strong>Find a Partner</strong>
+        <span>Find development, distribution or business partners.</span>
+      </button>
+
+      <button data-purpose="explore">
+        <strong>Explore Marketplace</strong>
+        <span>Browse available technology opportunities.</span>
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="products-preview" id="products">
+
+  <div class="section-title">
+    <span>AVAILABLE TECHNOLOGY</span>
+    <h2>Featured Products</h2>
+  </div>
+
+  <div class="product-grid">
+
+    <article class="product-card">
+
+      <span class="product-label">SECURITY TECHNOLOGY</span>
+
+      <h3>Guardian-Core</h3>
+
+      <p>
+        Security, protection and enforcement technology
+        for dependable digital systems.
+      </p>
+
+      <div class="product-actions">
+        <a href="index.html#guardian-core">View Product</a>
+        <span>Commercial Licensing</span>
+      </div>
+
+    </article>
+
+
+    <article class="product-card">
+
+      <span class="product-label">DIGITAL PLATFORM</span>
+
+      <h3>Marriage Bureau</h3>
+
+      <p>
+        A relationship and social discovery platform
+        available as a commercial technology opportunity.
+      </p>
+
+      <div class="product-actions">
+        <a href="index.html#relationship-platform">
+          View Product
+        </a>
+        <span>Commercial Opportunity</span>
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<section class="categories" id="categories">
+
+  <div class="section-title">
+    <span>MARKETPLACE CATEGORIES</span>
+    <h2>Explore Technology</h2>
+  </div>
+
+  <div class="category-grid">
+    <span>Software</span>
+    <span>SaaS</span>
+    <span>Security</span>
+    <span>AI</span>
+    <span>Web Apps</span>
+    <span>Mobile Apps</span>
+    <span>APIs</span>
+    <span>Digital Products</span>
+  </div>
+
+</section>
+
+</main>
+
+
+<footer class="market-footer">
+
+  <strong>EmpowerDevelopers</strong>
+
+  <span>
+    Global Technology Marketplace
+  </span>
+
+</footer>
+
+
+<script src="marketplace.js"></script>
+
+</body>
+</html>

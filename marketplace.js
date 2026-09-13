@@ -1,0 +1,902 @@
+const state = {
+  purpose: null,
+  step: 0,
+  answers: {}
+};
+
+/*
+  EmpowerDevelopers
+  Professional Marketplace Questionnaire Engine
+
+  Logic:
+  Purpose
+  -> Section
+  -> Question
+  -> Options
+  -> Required / Conditional Required / Optional
+  -> Validation
+  -> Review / Listing Preview
+*/
+
+const flows = {
+  buyer: {
+    title: "Buy Technology",
+    description: "Tell us what technology you want to acquire and the commercial requirements that matter to you.",
+    steps: [
+      {
+        title: "Basic Information",
+        questions: [
+          { key:"role", label:"What best describes you?", type:"select", required:true,
+            options:["Individual","Founder","Business Owner","Company Representative","Investor","Acquisition Team","Other"] },
+          { key:"full_name", label:"Full name", type:"text", required:true },
+          { key:"company", label:"Business or company name", type:"text", required:true },
+          { key:"email", label:"Email address", type:"email", required:true },
+          { key:"country", label:"Country", type:"select", required:true,
+            options:["Pakistan","United States","United Kingdom","United Arab Emirates","Saudi Arabia","Canada","Australia","Germany","Other"] },
+          { key:"website", label:"Website", type:"url", required:false }
+        ]
+      },
+      {
+        title: "Technology Requirements",
+        questions: [
+          { key:"technology_type", label:"What type of technology are you looking for?", type:"multiselect", required:true,
+            options:["SaaS","Web Application","Mobile Application","AI Product","API","Cybersecurity","Developer Tool","Automation","E-commerce","Marketplace","Digital Platform","Other"] },
+          { key:"category", label:"Which technology categories interest you?", type:"multiselect", required:true,
+            options:["Artificial Intelligence","Software","FinTech","HealthTech","EdTech","E-commerce","Cybersecurity","Business Software","Developer Technology","Automation","Consumer Technology","Other"] },
+          { key:"objective", label:"What is your primary acquisition objective?", type:"select", required:true,
+            options:["Launch a new business","Expand an existing business","Acquire technology","Acquire customers","Acquire users","Acquire a team","Investment","Other"] },
+          { key:"maturity", label:"What technology maturity do you prefer?", type:"multiselect", required:true,
+            options:["Idea","Prototype","MVP","Live","Revenue-generating","Established"] },
+          { key:"business_model", label:"Which business models are acceptable?", type:"multiselect", required:true,
+            options:["SaaS","Subscription","Marketplace","E-commerce","Licensing","Transaction Fee","Advertising","Freemium","One-time Purchase","Other"] }
+        ]
+      },
+      {
+        title: "Acquisition Requirements",
+        questions: [
+          { key:"customers_required", label:"Are existing customers important to you?", type:"select", required:true,
+            options:["Essential","Preferred","Not important"] },
+          { key:"users_required", label:"Are existing users important to you?", type:"select", required:true,
+            options:["Essential","Preferred","Not important"] },
+          { key:"revenue_preference", label:"What revenue status do you prefer?", type:"multiselect", required:true,
+            options:["Pre-revenue","Revenue-generating","Profitable","High-growth","Any"] },
+          { key:"minimum_revenue", label:"Preferred minimum annual revenue", type:"number", required:false,
+            conditional:{ key:"revenue_preference", includes:["Revenue-generating","Profitable","High-growth"] } },
+          { key:"minimum_profit", label:"Preferred minimum annual profit", type:"number", required:false,
+            conditional:{ key:"revenue_preference", includes:["Profitable"] } },
+          { key:"tech_stack", label:"Preferred technology stack", type:"text", required:false },
+          { key:"integrations", label:"Required integrations", type:"textarea", required:false }
+        ]
+      },
+      {
+        title: "Budget & Deal",
+        questions: [
+          { key:"budget", label:"What is your available acquisition budget?", type:"number", required:true },
+          { key:"budget_currency", label:"Budget currency", type:"select", required:true,
+            options:["USD","EUR","GBP","AED","SAR","PKR","CAD","AUD","Other"] },
+          { key:"deal_type", label:"What type of deal do you prefer?", type:"multiselect", required:true,
+            options:["Full Acquisition","Asset Purchase","Technology Acquisition","Equity","Other"] },
+          { key:"timeline", label:"When do you expect to complete the deal?", type:"select", required:true,
+            options:["Immediately","Within 30 days","1–3 months","3–6 months","6–12 months","Exploring"] },
+          { key:"financing", label:"What is your financing status?", type:"select", required:true,
+            options:["Funds ready","Partially ready","Financing required","Exploring"] }
+        ]
+      },
+      {
+        title: "Market & Requirements",
+        questions: [
+          { key:"market", label:"Which market or geography matters to you?", type:"multiselect", required:true,
+            options:["Global","North America","Europe","Middle East","South Asia","Southeast Asia","Africa","Pakistan","Other"] },
+          { key:"target_customer", label:"Who is your target customer?", type:"select", required:true,
+            options:["Consumers","Small Businesses","Medium Businesses","Enterprise","Government","Developers","Mixed","Other"] },
+          { key:"growth_preference", label:"What growth profile do you prefer?", type:"select", required:false,
+            options:["Stable","Growing","High Growth","Rapid Scale","No Preference"] },
+          { key:"additional_requirements", label:"Additional requirements", type:"textarea", required:false }
+        ]
+      }
+    ]
+  },
+
+  license: {
+    title: "License Technology",
+    description: "Define the technology, licensing model and commercial requirements you need.",
+    steps: [
+      {
+        title:"Basic Information",
+        questions:[
+          { key:"full_name", label:"Full name", type:"text", required:true },
+          { key:"company", label:"Business or company name", type:"text", required:true },
+          { key:"email", label:"Email address", type:"email", required:true },
+          { key:"country", label:"Country", type:"select", required:true,
+            options:["Pakistan","United States","United Kingdom","United Arab Emirates","Saudi Arabia","Canada","Australia","Germany","Other"] },
+          { key:"website", label:"Website", type:"url", required:false }
+        ]
+      },
+      {
+        title:"Licensing Requirements",
+        questions:[
+          { key:"license_type", label:"What type of license do you need?", type:"multiselect", required:true,
+            options:["Commercial","Enterprise","SaaS","API","White-label","OEM","Regional","Other"] },
+          { key:"license_use", label:"How will the technology be used?", type:"multiselect", required:true,
+            options:["Internal","Customer-facing","Embedded in Product","Resale","White-label","Other"] },
+          { key:"technology_category", label:"Technology category", type:"multiselect", required:true,
+            options:["Software","AI","API","Cybersecurity","Automation","Mobile","Web","E-commerce","Developer Tool","Other"] },
+          { key:"users", label:"Expected users or customers", type:"number", required:true },
+          { key:"territory", label:"Preferred territory", type:"multiselect", required:true,
+            options:["Global","Pakistan","North America","Europe","Middle East","Asia","Other"] },
+          { key:"deployment", label:"Preferred deployment", type:"select", required:true,
+            options:["Cloud","On-premise","Hybrid","Vendor Hosted"] }
+        ]
+      },
+      {
+        title:"Commercial Terms",
+        questions:[
+          { key:"budget", label:"Available licensing budget", type:"number", required:true },
+          { key:"currency", label:"Currency", type:"select", required:true,
+            options:["USD","EUR","GBP","AED","SAR","PKR","Other"] },
+          { key:"duration", label:"Preferred license duration", type:"select", required:true,
+            options:["Monthly","Annual","Multi-year","Perpetual","Other"] },
+          { key:"payment", label:"Preferred payment model", type:"select", required:true,
+            options:["One-time","Subscription","Milestone-based","Usage-based","Negotiable"] },
+          { key:"support", label:"Support requirement", type:"select", required:false,
+            options:["Standard","Priority","Enterprise","No Support Required"] },
+          { key:"customization", label:"Customization requirement", type:"select", required:false,
+            options:["None","Minor","Moderate","Extensive"] }
+        ]
+      },
+      {
+        title:"Technical Requirements",
+        questions:[
+          { key:"integrations", label:"Required integrations", type:"textarea", required:false },
+          { key:"security", label:"Security requirements", type:"multiselect", required:false,
+            options:["Standard Security","Enterprise Security","Data Encryption","Access Controls","Audit Logs","Other"] },
+          { key:"compliance", label:"Compliance requirements", type:"multiselect", required:false,
+            options:["None","GDPR","ISO-related","Industry-specific","Government","Other"] },
+          { key:"technical_requirements", label:"Additional technical requirements", type:"textarea", required:false }
+        ]
+      }
+    ]
+  },
+
+  seller: {
+    title:"Sell / List Technology",
+    description:"Provide the information required to create a professional and commercially useful technology listing.",
+    steps:[
+      {
+        title:"Seller Information",
+        questions:[
+          { key:"full_name", label:"Full name", type:"text", required:true },
+          { key:"seller_role", label:"What is your role?", type:"select", required:true,
+            options:["Founder","Co-founder","Owner","Company Representative","Authorized Seller","Other"] },
+          { key:"company", label:"Business or company name", type:"text", required:true },
+          { key:"email", label:"Email address", type:"email", required:true },
+          { key:"country", label:"Country", type:"select", required:true,
+            options:["Pakistan","United States","United Kingdom","United Arab Emirates","Saudi Arabia","Canada","Australia","Germany","Other"] },
+          { key:"location", label:"Business location", type:"text", required:true },
+          { key:"website", label:"Business website", type:"url", required:false }
+        ]
+      },
+      {
+        title:"Technology Identity",
+        questions:[
+          { key:"product_name", label:"Product or technology name", type:"text", required:true },
+          { key:"technology_type", label:"Technology type", type:"select", required:true,
+            options:["SaaS","Web Application","Mobile Application","AI Product","API","Cybersecurity","Developer Tool","Automation","E-commerce","Marketplace","Digital Platform","Other"] },
+          { key:"category", label:"Primary category", type:"select", required:true,
+            options:["Artificial Intelligence","Software","FinTech","HealthTech","EdTech","E-commerce","Cybersecurity","Business Software","Developer Technology","Automation","Consumer Technology","Other"] },
+          { key:"secondary_categories", label:"Additional categories", type:"multiselect", required:false,
+            options:["AI","SaaS","Mobile","Web","API","Cybersecurity","Automation","E-commerce","Marketplace","Other"] },
+          { key:"short_description", label:"Short product description", type:"textarea", required:true },
+          { key:"maturity", label:"Product maturity", type:"select", required:true,
+            options:["Idea","Prototype","MVP","Live","Revenue-generating","Established"] },
+          { key:"launch_date", label:"Launch date", type:"date", required:false }
+        ]
+      },
+      {
+        title:"Technology Details",
+        questions:[
+          { key:"platforms", label:"Supported platforms", type:"multiselect", required:true,
+            options:["Web","Android","iOS","Windows","macOS","Linux","Cloud","API"] },
+          { key:"tech_stack", label:"Technology stack", type:"textarea", required:true },
+          { key:"deployment", label:"Deployment model", type:"select", required:true,
+            options:["Cloud","On-premise","Hybrid","Local","Other"] },
+          { key:"integrations", label:"Existing integrations", type:"textarea", required:false },
+          { key:"dependencies", label:"Major third-party dependencies", type:"textarea", required:true },
+          { key:"documentation", label:"Technical documentation status", type:"select", required:true,
+            options:["Complete","Mostly Complete","Partial","Limited","None"] },
+          { key:"version_control", label:"Version control", type:"select", required:true,
+            options:["Git","Other Version Control","No Version Control"] },
+          { key:"backup", label:"Backup strategy", type:"select", required:true,
+            options:["Automated","Manual","Cloud Backup","Multiple Backups","None"] },
+          { key:"technical_debt", label:"Technical debt level", type:"select", required:true,
+            options:["Low","Moderate","High","Unknown"] },
+          { key:"cybersecurity", label:"Cybersecurity practices", type:"multiselect", required:true,
+            options:["Authentication","Authorization","Encryption","Audit Logging","Monitoring","Backups","Security Testing","Other"] }
+        ]
+      },
+      {
+        title:"Artificial Intelligence",
+        questions:[
+          { key:"uses_ai", label:"Does the technology use Artificial Intelligence?", type:"select", required:true,
+            options:["Yes","No","AI Planned"] },
+          { key:"ai_capabilities", label:"What AI capabilities are used?", type:"multiselect", required:true,
+            conditional:{ key:"uses_ai", includes:["Yes"] },
+            options:["Generative AI","Machine Learning","Computer Vision","Natural Language Processing","Recommendation Systems","Predictive Analytics","AI Agents","Other"] },
+          { key:"ai_models", label:"AI models or providers", type:"textarea", required:true,
+            conditional:{ key:"uses_ai", includes:["Yes"] } },
+          { key:"ai_dependency", label:"How dependent is the product on AI?", type:"select", required:true,
+            conditional:{ key:"uses_ai", includes:["Yes"] },
+            options:["Core Product","Major Feature","Supporting Feature","Experimental"] },
+          { key:"proprietary_ai", label:"Does the product include proprietary AI technology?", type:"select", required:true,
+            conditional:{ key:"uses_ai", includes:["Yes"] },
+            options:["Yes","No","Partially","Unknown"] }
+        ]
+      },
+      {
+        title:"Business Model",
+        questions:[
+          { key:"business_model", label:"Business model", type:"select", required:true,
+            options:["SaaS","Subscription","Marketplace","E-commerce","Licensing","Transaction Fee","Advertising","Freemium","One-time Purchase","Other"] },
+          { key:"target_customer", label:"Primary target customer", type:"multiselect", required:true,
+            options:["Consumers","Small Businesses","Medium Businesses","Enterprise","Government","Developers","Other"] },
+          { key:"target_market", label:"Target market", type:"multiselect", required:true,
+            options:["Global","North America","Europe","Middle East","South Asia","Southeast Asia","Africa","Pakistan","Other"] },
+          { key:"customer_problem", label:"Main customer problem solved", type:"textarea", required:true },
+          { key:"value_proposition", label:"Main value proposition", type:"textarea", required:true }
+        ]
+      },
+      {
+        title:"Users & Financial Performance",
+        questions:[
+          { key:"has_revenue", label:"Has the product generated revenue?", type:"select", required:true,
+            options:["Yes","No"] },
+          { key:"monthly_revenue", label:"Current monthly gross revenue", type:"number", required:true,
+            conditional:{ key:"has_revenue", includes:["Yes"] } },
+          { key:"ttm_revenue", label:"Trailing twelve-month gross revenue", type:"number", required:true,
+            conditional:{ key:"has_revenue", includes:["Yes"] } },
+          { key:"monthly_profit", label:"Current monthly net profit", type:"number", required:true,
+            conditional:{ key:"has_revenue", includes:["Yes"] } },
+          { key:"ttm_profit", label:"Trailing twelve-month net profit", type:"number", required:true,
+            conditional:{ key:"has_revenue", includes:["Yes"] } },
+          { key:"arr", label:"ARR", type:"number", required:false,
+            conditional:{ key:"business_model", includes:["SaaS","Subscription"] } },
+          { key:"mrr", label:"MRR", type:"number", required:false,
+            conditional:{ key:"business_model", includes:["SaaS","Subscription"] } },
+          { key:"growth_rate", label:"Annual growth rate (%)", type:"number", required:false },
+          { key:"active_customers", label:"Active customers", type:"number", required:false },
+          { key:"active_users", label:"Active users", type:"number", required:false },
+          { key:"retention", label:"Customer retention / churn information", type:"text", required:false },
+          { key:"traffic", label:"Traffic, downloads or usage information", type:"textarea", required:false }
+        ]
+      },
+      {
+        title:"Business Operations",
+        questions:[
+          { key:"team_size", label:"Current team size", type:"number", required:true },
+          { key:"team_structure", label:"Team structure", type:"textarea", required:false },
+          { key:"key_roles", label:"Key team roles", type:"multiselect", required:false,
+            options:["Engineering","Product","Sales","Marketing","Operations","Customer Support","Management","Other"] },
+          { key:"operations_docs", label:"Are operating processes documented?", type:"select", required:true,
+            options:["Fully","Partially","No"] },
+          { key:"support_system", label:"Customer support system", type:"select", required:false,
+            options:["Dedicated Support","Helpdesk","Email","Chat","Self-service","None"] },
+          { key:"operating_dependencies", label:"Major operating dependencies", type:"textarea", required:false },
+          { key:"reason_selling", label:"Primary reason for selling", type:"select", required:true,
+            options:["New Venture","Capital Reallocation","Strategic Exit","Time Constraints","Different Business Focus","Partnership/Team Change","Other"] }
+        ]
+      },
+      {
+        title:"Price & Commercial Terms",
+        questions:[
+          { key:"asking_price", label:"Asking price", type:"number", required:true },
+          { key:"currency", label:"Price currency", type:"select", required:true,
+            options:["USD","EUR","GBP","AED","SAR","PKR","CAD","AUD","Other"] },
+          { key:"deal_type", label:"Commercial deal type", type:"multiselect", required:true,
+            options:["Full Sale","Technology Sale","Asset Sale","License","Exclusive License","Non-exclusive License","Equity","Other"] },
+          { key:"price_reason", label:"Reasoning behind the asking price", type:"textarea", required:false },
+          { key:"negotiation", label:"Negotiation preference", type:"select", required:true,
+            options:["Fixed","Negotiable","Offers Invited"] }
+        ]
+      },
+      {
+        title:"Market & Competition",
+        questions:[
+          { key:"market", label:"Primary market", type:"multiselect", required:true,
+            options:["Global","North America","Europe","Middle East","South Asia","Southeast Asia","Africa","Pakistan","Other"] },
+          { key:"geographic_reach", label:"Current geographic reach", type:"multiselect", required:false,
+            options:["Local","National","Regional","International","Global"] },
+          { key:"competitors", label:"Main competitors", type:"textarea", required:false },
+          { key:"competitive_advantage", label:"Competitive advantage", type:"textarea", required:true },
+          { key:"market_opportunity", label:"Market opportunity", type:"textarea", required:true },
+          { key:"growth_opportunity", label:"Growth opportunity", type:"textarea", required:false },
+          { key:"marketing_channels", label:"Main marketing channels", type:"multiselect", required:false,
+            options:["Organic Search","Paid Advertising","Social Media","Direct Sales","Partnerships","Referrals","Marketplace","Other"] },
+          { key:"acquisition_channels", label:"Main customer acquisition channels", type:"multiselect", required:false,
+            options:["Organic","Paid","Sales","Partnerships","Referrals","Other"] },
+          { key:"risks", label:"Major risks or challenges", type:"textarea", required:false }
+        ]
+      },
+      {
+        title:"Ownership & Rights",
+        questions:[
+          { key:"ownership", label:"Who owns the technology?", type:"select", required:true,
+            options:["Individual","Company","Joint Ownership","Other"] },
+          { key:"source_code", label:"Source code ownership", type:"select", required:true,
+            options:["Fully Owned","Partially Owned","Licensed","Third-party","Other"] },
+          { key:"domain", label:"Domain ownership", type:"select", required:true,
+            options:["Owned and Included","Owned but Excluded","Licensed","Other"] },
+          { key:"brand", label:"Brand or trademark rights", type:"select", required:true,
+            options:["Owned and Included","Owned but Excluded","Licensed","Not Registered","Other"] },
+          { key:"data_ownership", label:"Data ownership", type:"select", required:true,
+            options:["Fully Owned","Shared","Customer-owned","Third-party","Other"] },
+          { key:"ip_included", label:"Which intellectual property is included?", type:"multiselect", required:true,
+            options:["Source Code","Documentation","Brand","Domain","Designs","Data Rights","Patents","Trademarks","Other"] },
+          { key:"third_party_licenses", label:"Third-party licenses", type:"textarea", required:true },
+          { key:"open_source", label:"Open-source dependencies", type:"textarea", required:true },
+          { key:"restrictions", label:"Existing contractual restrictions", type:"textarea", required:false },
+          { key:"ownership_dispute", label:"Are there any ownership disputes?", type:"select", required:true,
+            options:["No","Yes","Under Review"] }
+        ]
+      },
+      {
+        title:"Verification & Media",
+        questions:[
+          { key:"identity_verification", label:"Can you provide identity verification?", type:"select", required:true,
+            options:["Yes","No","Later"] },
+          { key:"ownership_verification", label:"Can you provide ownership evidence?", type:"select", required:true,
+            options:["Yes","No","Later"] },
+          { key:"business_verification", label:"Can you provide business verification?", type:"select", required:false,
+            options:["Yes","No","Not Applicable"] },
+          { key:"financial_verification", label:"Can financial information be verified?", type:"select", required:false,
+            options:["Yes","No","Not Applicable","Later"] },
+          { key:"technology_verification", label:"Can the technology be demonstrated?", type:"select", required:true,
+            options:["Yes","No","Later"] },
+          { key:"documents", label:"Supporting documents", type:"textarea", required:false },
+          { key:"demo_url", label:"Demo URL", type:"url", required:false },
+          { key:"product_url", label:"Product website", type:"url", required:false },
+          { key:"video_url", label:"Demo video URL", type:"url", required:false },
+          { key:"additional_information", label:"Additional information buyers should know", type:"textarea", required:false }
+        ]
+      }
+    ]
+  },
+
+  partner: {
+    title:"Find a Partner",
+    description:"Tell us what kind of technology, commercial or strategic partner you need.",
+    steps:[
+      {
+        title:"Basic Information",
+        questions:[
+          { key:"full_name", label:"Full name", type:"text", required:true },
+          { key:"organization", label:"Organization", type:"text", required:true },
+          { key:"email", label:"Email address", type:"email", required:true },
+          { key:"country", label:"Country", type:"select", required:true,
+            options:["Pakistan","United States","United Kingdom","United Arab Emirates","Saudi Arabia","Canada","Australia","Germany","Other"] }
+        ]
+      },
+      {
+        title:"Partnership",
+        questions:[
+          { key:"partner_type", label:"What type of partner are you looking for?", type:"multiselect", required:true,
+            options:["Technology","Distribution","Investment","Development","Sales","Marketing","Strategic","Joint Venture","Other"] },
+          { key:"objective", label:"Partnership objective", type:"textarea", required:true },
+          { key:"market", label:"Target market", type:"multiselect", required:true,
+            options:["Global","North America","Europe","Middle East","South Asia","Southeast Asia","Africa","Pakistan","Other"] },
+          { key:"geography", label:"Preferred partner geography", type:"multiselect", required:false,
+            options:["Global","North America","Europe","Middle East","Asia","Pakistan","Other"] }
+        ]
+      },
+      {
+        title:"Contribution & Commercial Terms",
+        questions:[
+          { key:"your_contribution", label:"What can you contribute?", type:"multiselect", required:true,
+            options:["Capital","Technology","Customers","Distribution","Development","Marketing","Industry Expertise","Other"] },
+          { key:"partner_contribution", label:"What do you expect from the partner?", type:"multiselect", required:true,
+            options:["Capital","Technology","Customers","Distribution","Development","Marketing","Industry Expertise","Other"] },
+          { key:"commercial_model", label:"Preferred commercial arrangement", type:"select", required:true,
+            options:["Revenue Share","Equity","Fixed Fee","Joint Venture","Licensing","Negotiable","Other"] },
+          { key:"timeline", label:"Expected partnership timeline", type:"select", required:false,
+            options:["Immediately","Within 30 Days","1–3 Months","3–6 Months","Exploring"] },
+          { key:"additional_requirements", label:"Additional requirements", type:"textarea", required:false }
+        ]
+      }
+    ]
+  },
+
+  explore: {
+    title:"Explore Marketplace",
+    description:"Tell us what you are interested in so the marketplace can present more relevant opportunities.",
+    steps:[
+      {
+        title:"Your Interests",
+        questions:[
+          { key:"categories", label:"Which technology areas interest you?", type:"multiselect", required:true,
+            options:["AI","SaaS","Web","Mobile","API","Cybersecurity","Automation","E-commerce","Marketplace","Developer Tools","Other"] },
+          { key:"maturity", label:"Which maturity levels interest you?", type:"multiselect", required:false,
+            options:["Idea","Prototype","MVP","Live","Revenue-generating","Established"] },
+          { key:"industries", label:"Preferred industries", type:"multiselect", required:false,
+            options:["FinTech","HealthTech","EdTech","E-commerce","Business","Security","Consumer","Government","Other"] },
+          { key:"commercial_models", label:"Preferred commercial models", type:"multiselect", required:false,
+            options:["Purchase","License","Investment","Partnership","Any"] }
+        ]
+      },
+      {
+        title:"Marketplace Purpose",
+        questions:[
+          { key:"explore_purpose", label:"What do you mainly want to explore?", type:"multiselect", required:true,
+            options:["Products","Technology","AI","Investment Opportunities","Licensing Opportunities","Partnerships","Acquisition Opportunities"] },
+          { key:"market", label:"Preferred market", type:"multiselect", required:false,
+            options:["Global","North America","Europe","Middle East","South Asia","Southeast Asia","Africa","Pakistan","Other"] },
+          { key:"additional_interest", label:"Anything else you want to explore?", type:"textarea", required:false }
+        ]
+      }
+    ]
+  }
+};
+
+function isVisible(question) {
+  if (!question.conditional) return true;
+
+  const value = state.answers[question.conditional.key];
+
+  if (Array.isArray(value)) {
+    return question.conditional.includes.some(v => value.includes(v));
+  }
+
+  return question.conditional.includes.includes(value);
+}
+
+function isRequired(question) {
+  if (question.required === true) return true;
+
+  if (question.required === false && !question.conditionalRequired) return false;
+
+  if (question.conditionalRequired) {
+    const value = state.answers[question.conditionalRequired.key];
+
+    if (Array.isArray(value)) {
+      return question.conditionalRequired.includes.some(v => value.includes(v));
+    }
+
+    return question.conditionalRequired.includes.includes(value);
+  }
+
+  return false;
+}
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+function renderQuestion(question) {
+  if (!isVisible(question)) return "";
+
+  const value = state.answers[question.key];
+  const required = isRequired(question);
+
+  const requiredMark = required
+    ? '<span class="question-required">*</span>'
+    : '<span class="question-optional">Optional</span>';
+
+  let input = "";
+
+  if (question.type === "select") {
+    input = `
+      <select data-key="${question.key}">
+        <option value="">Select an option</option>
+        ${question.options.map(option => `
+          <option value="${escapeHtml(option)}" ${value === option ? "selected" : ""}>
+            ${escapeHtml(option)}
+          </option>
+        `).join("")}
+      </select>
+    `;
+  }
+
+  if (question.type === "multiselect") {
+    const selected = Array.isArray(value) ? value : [];
+
+    input = `
+      <div class="market-options">
+        ${question.options.map(option => `
+          <label class="market-option">
+            <input
+              type="checkbox"
+              data-key="${question.key}"
+              value="${escapeHtml(option)}"
+              ${selected.includes(option) ? "checked" : ""}
+            >
+            <span>${escapeHtml(option)}</span>
+          </label>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  if (question.type === "textarea") {
+    input = `
+      <textarea
+        data-key="${question.key}"
+        rows="4"
+        placeholder="Enter information"
+      >${escapeHtml(value || "")}</textarea>
+    `;
+  }
+
+  if (["text","email","url","number","date"].includes(question.type)) {
+    input = `
+      <input
+        type="${question.type}"
+        data-key="${question.key}"
+        value="${escapeHtml(value || "")}"
+        placeholder="${question.type === "url" ? "https://" : ""}"
+      >
+    `;
+  }
+
+  return `
+    <div class="market-question" data-question="${question.key}">
+      <label>
+        <strong>${escapeHtml(question.label)}</strong>
+        ${requiredMark}
+      </label>
+      ${input}
+      <div class="question-error" data-error="${question.key}"></div>
+    </div>
+  `;
+}
+
+
+function updateConditionalVisibility() {
+  const purpose = flows[state.purpose];
+  if (!purpose) return;
+
+  const step = purpose.steps[state.step];
+  if (!step) return;
+
+  step.questions.forEach(question => {
+    const wrapper = document.querySelector(
+      `[data-question="${question.key}"]`
+    );
+
+    if (!wrapper) return;
+
+    wrapper.hidden = !isVisible(question);
+  });
+}
+
+
+function enforceSelectionLimit(element) {
+  if (element.type !== "checkbox") return;
+
+  const key = element.dataset.key;
+  const question = flows[state.purpose]
+    ?.steps[state.step]
+    ?.questions
+    ?.find(q => q.key === key);
+
+  if (!question) return;
+
+  const maxSelections =
+    Number(question.maxSelections) ||
+    (question.type === "multiselect" || question.type === "checkbox-group"
+      ? 3
+      : 1);
+
+  const selected = [
+    ...document.querySelectorAll(
+      `input[type="checkbox"][data-key="${key}"]:checked`
+    )
+  ];
+
+  if (selected.length > maxSelections) {
+    element.checked = false;
+
+    const error = document.querySelector(`[data-error="${key}"]`);
+    if (error) {
+      error.textContent =
+        `You can select a maximum of ${maxSelections} option(s).`;
+    }
+
+    return false;
+  }
+
+  return true;
+}
+
+function enforceSingleSelection(element) {
+  if (element.type !== "radio") return;
+
+  const key = element.dataset.key;
+
+  document
+    .querySelectorAll(`input[type="radio"][data-key="${key}"]`)
+    .forEach(input => {
+      input.checked = input === element;
+    });
+}
+
+function attachQuestionListeners() {
+  document.querySelectorAll("[data-key]").forEach(element => {
+    element.addEventListener("change", () => {
+      const key = element.dataset.key;
+
+      // Radio = exactly one choice.
+      if (element.type === "radio") {
+        enforceSingleSelection(element);
+        state.answers[key] = element.value;
+      }
+
+      // Checkbox = controlled multi-selection.
+      else if (element.type === "checkbox") {
+        const allowed = enforceSelectionLimit(element);
+
+        if (!allowed) {
+          return;
+        }
+
+        const checked = [
+          ...document.querySelectorAll(
+            `input[type="checkbox"][data-key="${key}"]:checked`
+          )
+        ].map(input => input.value);
+
+        state.answers[key] = checked;
+      }
+
+      // Normal input/select/textarea.
+      else {
+        state.answers[key] = element.value;
+      }
+
+      // Only conditional visibility changes.
+      // NEVER rerender the whole step here.
+      updateConditionalVisibility();
+    });
+  });
+
+  updateConditionalVisibility();
+}
+
+function validateStep() {
+  const step = flows[state.purpose].steps[state.step];
+  let valid = true;
+
+  step.questions.forEach(question => {
+    if (!isVisible(question)) return;
+
+    const value = state.answers[question.key];
+    const required = isRequired(question);
+
+    let empty = false;
+
+    if (Array.isArray(value)) {
+      empty = value.length === 0;
+    } else {
+      empty = !String(value ?? "").trim();
+    }
+
+    const error = document.querySelector(`[data-error="${question.key}"]`);
+
+    if (required && empty) {
+      valid = false;
+      if (error) error.textContent = "This information is required.";
+    } else if (error) {
+      error.textContent = "";
+    }
+
+    if (question.type === "email" && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+      valid = false;
+      if (error) error.textContent = "Please enter a valid email address.";
+    }
+
+    if (question.type === "url" && value) {
+      try {
+        new URL(value);
+      } catch {
+        valid = false;
+        if (error) error.textContent = "Please enter a valid URL.";
+      }
+    }
+  });
+
+  return valid;
+}
+
+function renderStep() {
+  const flow = flows[state.purpose];
+  if (!flow) return;
+
+  const container = document.getElementById("question-area");
+  if (!container) return;
+
+  const step = flow.steps[state.step];
+  const total = flow.steps.length;
+
+  container.innerHTML = `
+    <div class="market-progress">
+      <div class="market-progress-text">
+        Step ${state.step + 1} of ${total}
+      </div>
+      <div class="market-progress-bar">
+        <span style="width:${((state.step + 1) / total) * 100}%"></span>
+      </div>
+    </div>
+
+    <div class="market-step-heading">
+      <span>STEP ${String(state.step + 1).padStart(2,"0")}</span>
+      <h3>${escapeHtml(step.title)}</h3>
+    </div>
+
+    <div class="market-question-list">
+      ${step.questions.map(renderQuestion).join("")}
+    </div>
+
+    <div class="market-navigation">
+      <button type="button" class="market-back" id="market-back"
+        ${state.step === 0 ? "disabled" : ""}>
+        Back
+      </button>
+
+      <button type="button" class="market-next" id="market-next">
+        ${state.step === total - 1 ? "Review Information" : "Save & Continue"}
+      </button>
+    </div>
+  `;
+
+  attachQuestionListeners();
+
+  document.getElementById("market-back")?.addEventListener("click", () => {
+    if (state.step > 0) {
+      state.step--;
+      renderStep();
+    }
+  });
+
+    document.getElementById("market-next")?.addEventListener("click", () => {
+      console.log("MARKETPLACE NEXT CLICKED", {
+        purpose: state.purpose,
+        step: state.step,
+        answers: state.answers
+      });
+
+      const valid = validateStep();
+      console.log("MARKETPLACE VALIDATION RESULT:", valid);
+
+      if (!valid) return;
+
+      if (state.step < total - 1) {
+        state.step++;
+        console.log("MARKETPLACE MOVING TO STEP:", state.step);
+        renderStep();
+      } else {
+        showFinalReview();
+      }
+    });
+}
+
+function showFinalReview() {
+  const flow = flows[state.purpose];
+
+  const sections = flow.steps.map(step => `
+    <section class="review-section">
+      <h3>${escapeHtml(step.title)}</h3>
+      ${step.questions
+        .filter(isVisible)
+        .map(question => {
+          const value = state.answers[question.key];
+
+          if (value === undefined || value === "" ||
+              (Array.isArray(value) && value.length === 0)) {
+            return "";
+          }
+
+          return `
+            <div class="review-row">
+              <strong>${escapeHtml(question.label)}</strong>
+              <span>${escapeHtml(Array.isArray(value) ? value.join(", ") : value)}</span>
+            </div>
+          `;
+        }).join("")}
+    </section>
+  `).join("");
+
+  const area = document.getElementById("question-area");
+
+  area.innerHTML = `
+    <div class="market-review">
+      <div class="market-step-heading">
+        <span>FINAL REVIEW</span>
+        <h3>Review Your Information</h3>
+        <p>Please review the information before submitting.</p>
+      </div>
+
+      ${sections}
+
+      <div class="market-navigation">
+        <button type="button" class="market-back" id="review-back">
+          Edit Information
+        </button>
+
+        <button type="button" class="market-next" id="market-submit">
+          Submit
+        </button>
+      </div>
+    </div>
+  `;
+
+  document.getElementById("review-back")?.addEventListener("click", () => {
+    state.step = flow.steps.length - 1;
+    renderStep();
+  });
+
+  document.getElementById("market-submit")?.addEventListener("click", () => {
+    showSubmissionMessage();
+  });
+}
+
+function showSubmissionMessage() {
+  const area = document.getElementById("question-area");
+
+  area.innerHTML = `
+    <div class="market-success">
+      <span class="eyebrow">SUBMISSION READY</span>
+      <h3>Your marketplace information has been prepared.</h3>
+      <p>
+        Your information is currently held in this marketplace session.
+        Account, verification, payment and marketplace publishing services
+        will be connected in the later platform phase.
+      </p>
+      <button type="button" class="market-next" id="return-marketplace">
+        Return to Marketplace
+      </button>
+    </div>
+  `;
+
+  document.getElementById("return-marketplace")?.addEventListener("click", () => {
+    location.reload();
+  });
+}
+
+function startPurpose(purpose) {
+  if (!flows[purpose]) return;
+
+  state.purpose = purpose;
+  state.step = 0;
+  state.answers = {};
+
+  const flow = flows[purpose];
+
+  const flowSection = document.getElementById("purpose-flow");
+  const title = document.getElementById("purpose-title");
+  const description = document.getElementById("purpose-description");
+
+  if (flowSection) flowSection.hidden = false;
+  if (title) title.textContent = flow.title;
+  if (description) description.textContent = flow.description;
+
+  renderStep();
+
+  flowSection?.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+}
+
+document.querySelectorAll("[data-purpose]").forEach(button => {
+  button.addEventListener("click", () => {
+    // Once a purpose is selected, it cannot be changed mid-questionnaire.
+    if (state.purpose) {
+      console.warn("Purpose already selected:", state.purpose);
+      return;
+    }
+
+    startPurpose(button.dataset.purpose);
+  });
+});

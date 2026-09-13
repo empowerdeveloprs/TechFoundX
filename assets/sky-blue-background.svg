@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="420" viewBox="0 0 420 420">
+
+<rect width="420" height="420" fill="#dceff1"/>
+
+<!-- soft sky-blue ornamental field -->
+<g fill="none" stroke="#79bfc9" stroke-width="2" opacity=".28">
+
+  <path d="M210 65
+           C185 35 145 38 138 68
+           C132 94 160 108 188 91
+           C161 113 166 145 194 151
+           C218 157 232 130 210 105
+           C232 130 260 157 278 140
+           C297 121 277 94 245 91
+           C275 94 298 73 282 52
+           C266 32 234 43 210 65Z"/>
+
+  <circle cx="210" cy="210" r="30"/>
+  <circle cx="210" cy="210" r="11"/>
+
+  <path d="M210 180
+           C180 155 151 170 158 196
+           C164 218 190 218 210 200"/>
+
+  <path d="M240 210
+           C265 180 250 151 224 158
+           C202 164 202 190 220 210"/>
+
+  <path d="M210 240
+           C240 265 269 250 262 224
+           C256 202 230 202 210 220"/>
+
+  <path d="M180 210
+           C155 240 170 269 196 262
+           C218 256 218 230 200 210"/>
+
+  <!-- soft surrounding geometry -->
+  <path d="M20 210 L80 150 L140 210 L80 270 Z"/>
+  <path d="M400 210 L340 150 L280 210 L340 270 Z"/>
+  <path d="M210 20 L150 80 L210 140 L270 80 Z"/>
+  <path d="M210 400 L150 340 L210 280 L270 340 Z"/>
+
+</g>
+
+<!-- soft highlights -->
+<g fill="#ffffff" opacity=".30">
+  <circle cx="55" cy="55" r="8"/>
+  <circle cx="365" cy="65" r="6"/>
+  <circle cx="70" cy="350" r="6"/>
+  <circle cx="350" cy="365" r="9"/>
+</g>
+
+<!-- tiny sky-blue dots -->
+<g fill="#5daebd" opacity=".24">
+  <circle cx="110" cy="105" r="4"/>
+  <circle cx="310" cy="105" r="4"/>
+  <circle cx="110" cy="315" r="4"/>
+  <circle cx="310" cy="315" r="4"/>
+</g>
+
+</svg>

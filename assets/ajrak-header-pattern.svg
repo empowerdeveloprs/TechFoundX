@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="280" viewBox="0 0 280 280">
+
+<rect width="280" height="280" fill="#123f50"/>
+
+<!-- Ajrak-inspired medium geometric floral pattern -->
+<g fill="none" stroke="#75c4c9" stroke-width="2.4" opacity=".68">
+
+  <!-- central eight-point floral motif -->
+  <circle cx="140" cy="140" r="18"/>
+  <circle cx="140" cy="140" r="6"/>
+
+  <path d="M140 122
+           C119 103 99 106 96 123
+           C93 139 110 146 128 140
+           C110 146 93 153 96 169
+           C99 186 119 177 140 158
+           C119 177 103 186 111 201
+           C119 216 137 203 140 181
+           C143 203 161 216 169 201
+           C177 186 161 177 140 158
+           C161 177 181 186 184 169
+           C187 153 170 146 152 140
+           C170 146 187 139 184 123
+           C181 106 161 103 140 122Z"/>
+
+  <!-- diamonds -->
+  <path d="M0 0 L35 35 L0 70"/>
+  <path d="M280 0 L245 35 L280 70"/>
+  <path d="M0 280 L35 245 L0 210"/>
+  <path d="M280 280 L245 245 L280 210"/>
+
+  <!-- side ornaments -->
+  <path d="M20 140
+           C40 120 58 120 70 140
+           C58 160 40 160 20 140Z"/>
+
+  <path d="M260 140
+           C240 120 222 120 210 140
+           C222 160 240 160 260 140Z"/>
+
+  <!-- top / bottom ornaments -->
+  <path d="M140 20
+           C120 40 120 58 140 70
+           C160 58 160 40 140 20Z"/>
+
+  <path d="M140 260
+           C120 240 120 222 140 210
+           C160 222 160 240 140 260Z"/>
+
+</g>
+
+<!-- Ajrak blue highlights -->
+<g fill="#a5dfe0" opacity=".48">
+  <circle cx="140" cy="140" r="3"/>
+  <circle cx="35" cy="35" r="4"/>
+  <circle cx="245" cy="35" r="4"/>
+  <circle cx="35" cy="245" r="4"/>
+  <circle cx="245" cy="245" r="4"/>
+</g>
+
+<!-- dark blue depth -->
+<g stroke="#061f2c" stroke-width="3" opacity=".38">
+  <path d="M0 35 H70"/>
+  <path d="M210 35 H280"/>
+  <path d="M0 245 H70"/>
+  <path d="M210 245 H280"/>
+</g>
+
+</svg>

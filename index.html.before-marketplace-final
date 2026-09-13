@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="EmpowerDevelopers — Technology and software development focused on empowering people, building reliable digital solutions and creating opportunities through technology."
+  >
+
+  <title>EmpowerDevelopers | Technology & Software Development</title>
+
+  <link rel="icon" type="image/png" href="assets/logo.PNG">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+
+  <div class="header-brand">
+
+    <a href="#" class="brand-link">
+
+      <img
+        src="assets/logo.PNG"
+        alt="EmpowerDevelopers Logo"
+        class="header-logo"
+      >
+
+      <div class="brand-text">
+        <strong class="brand-name">
+          <span class="brand-empower">Empower</span>
+          <span class="brand-developers">Developers</span>
+        </strong>
+        <span>Empowering People Through Technology.</span>
+      </div>
+
+    </a>
+
+  </div>
+
+  <nav class="site-nav">
+    <a href="#mission">Mission</a>
+    <a href="#capabilities">Capabilities</a>
+    <a href="#approach">Approach</a>
+    <a href="#guardian-core">Guardian-Core</a>
+    <a href="#marketplace">Marketplace</a>
+    <a href="#hibha">Hibba</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+</header>
+
+
+<main>
+
+  <!-- HERO -->
+
+  <section id="home" class="hero">
+
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        TECHNOLOGY • SOFTWARE • DIGITAL SOLUTIONS
+      </div>
+
+      <h1>
+        Empowering People Through Technology.
+      </h1>
+
+      <p class="hero-lead">
+        EmpowerDevelopers is a technology and software development company
+        committed to turning ideas, skills and opportunities into reliable
+        digital solutions that create lasting value.
+      </p>
+
+      <div class="hero-actions">
+        <a class="button primary" href="#mission">
+          Our Mission
+        </a>
+
+        <a class="button secondary" href="#contact">
+          Contact Us
+        </a>
+      </div>
+
+      <div class="hero-capabilities" aria-label="Core capabilities">
+        <span class="hero-capability">Software Development</span>
+        <span class="hero-capability">Digital Solutions</span>
+        <span class="hero-capability">Security & Reliability</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION -->
+
+  <section id="mission" class="section">
+
+    <div class="section-heading">
+      <span>01</span>
+      <h2>Our Mission</h2>
+    </div>
+
+    <div class="mission-grid">
+
+      <div class="mission-main">
+
+        <h3>
+          Technology should empower people, not limit them.
+        </h3>
+
+        <p>
+          Our mission is to develop practical, secure and reliable
+          technology that helps people and organizations turn their
+          potential into meaningful opportunities.
+        </p>
+
+        <p>
+          We believe technology can strengthen skills, support economic
+          independence, improve access to digital solutions and create
+          sustainable possibilities for the future.
+        </p>
+
+      </div>
+
+      <div class="mission-statement">
+
+        <span>OUR PRINCIPLE</span>
+
+        <strong>
+          Empower people.<br>
+          Build possibilities.<br>
+          Create lasting value.
+        </strong>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CAPABILITIES -->
+
+  <section id="capabilities" class="section">
+
+    <div class="section-heading">
+      <span>02</span>
+      <h2>What We Do</h2>
+    </div>
+
+    <div class="cards">
+
+      <article class="card">
+        <div class="card-number">01</div>
+
+        <h3>Software Development</h3>
+
+        <p>
+          Designing and developing modern software systems with a focus
+          on usability, reliability and long-term maintainability.
+        </p>
+      </article>
+
+
+      <article class="card">
+        <div class="card-number">02</div>
+
+        <h3>Digital Solutions</h3>
+
+        <p>
+          Building practical digital solutions that address real-world
+          needs and create measurable value.
+        </p>
+      </article>
+
+
+      <article class="card">
+        <div class="card-number">03</div>
+
+        <h3>Technology & Innovation</h3>
+
+        <p>
+          Exploring modern technologies and developing solutions designed
+          for changing digital environments.
+        </p>
+      </article>
+
+
+      <article class="card">
+        <div class="card-number">04</div>
+
+        <h3>Security & Reliability</h3>
+
+        <p>
+          Treating security, protection and reliability as fundamental
+          considerations in technology development.
+        </p>
+      </article>
+
+
+      <article class="card">
+        <div class="card-number">05</div>
+
+        <h3>Economic Empowerment</h3>
+
+        <p>
+          Using technology to help transform skills, ideas and capabilities
+          into sustainable opportunities.
+        </p>
+      </article>
+
+
+      <article class="card">
+        <div class="card-number">06</div>
+
+        <h3>Future-Ready Systems</h3>
+
+        <p>
+          Creating adaptable foundations that can evolve with technology,
+          users and future requirements.
+        </p>
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- APPROACH -->
+
+  <section id="approach" class="section approach">
+
+    <div class="section-heading">
+      <span>03</span>
+      <h2>Our Approach</h2>
+    </div>
+
+    <div class="approach-content">
+
+      <div>
+        <span class="eyebrow">BUILD WITH PURPOSE</span>
+
+        <h2>
+          From ideas to dependable technology.
+        </h2>
+      </div>
+
+      <p>
+        We approach technology development with a balance of innovation,
+        simplicity, security and practical impact. Every solution should
+        have a clear purpose, a strong foundation and room to grow.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- VALUES -->
+
+  <section class="section">
+
+    <div class="section-heading">
+      <span>04</span>
+      <h2>Our Values</h2>
+    </div>
+
+    <div class="values">
+
+      <div>
+        <strong>Empowerment</strong>
+        <p>Technology should expand opportunity.</p>
+      </div>
+
+      <div>
+        <strong>Integrity</strong>
+        <p>Trust begins with responsible development.</p>
+      </div>
+
+      <div>
+        <strong>Innovation</strong>
+        <p>Progress comes from useful ideas.</p>
+      </div>
+
+      <div>
+        <strong>Reliability</strong>
+        <p>Strong foundations create lasting solutions.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FUTURE -->
+
+  <section class="section future">
+
+    <div class="future-content">
+
+      <span>LOOKING AHEAD</span>
+
+      <h2>
+        Building technology for a more empowered future.
+      </h2>
+
+      <p>
+        Our work continues to evolve as technology creates new ways
+        to connect people, solve problems and build opportunities.
+      </p>
+
+    </div>
+
+  </section>
+
+
+
+
+  <!-- RELATIONSHIP & SOCIAL DISCOVERY PLATFORM -->
+
+  <section id="marketplace" class="section marketplace-section">
+
+    <div class="section-heading">
+      <span>05</span>
+      <h2>EmpowerDevelopers Marketplace</h2>
+    </div>
+
+    <div class="marketplace-card">
+
+      <div class="marketplace-content">
+
+        <span class="eyebrow">
+          GLOBAL • TECHNOLOGY • SOFTWARE • COMMERCIAL
+        </span>
+
+        <h3>
+          Discover technology products ready for commercial opportunity.
+        </h3>
+
+        <p>
+          EmpowerDevelopers Marketplace connects buyers, technology owners
+          and commercial partners around software products, digital platforms
+          and technology solutions.
+        </p>
+
+        <div class="marketplace-options">
+
+          <div>
+            <strong>Buy</strong>
+            <span>
+              Discover technology products available for acquisition
+              and commercial use.
+            </span>
+          </div>
+
+          <div>
+            <strong>License</strong>
+            <span>
+              Access software and technology through suitable
+              commercial licensing arrangements.
+            </span>
+          </div>
+
+          <div>
+            <strong>Partner</strong>
+            <span>
+              Explore opportunities to collaborate, distribute or
+              develop technology products.
+            </span>
+          </div>
+
+        </div>
+
+        <div class="marketplace-categories">
+
+          <span>Software</span>
+          <span>SaaS</span>
+          <span>Security</span>
+          <span>AI</span>
+          <span>Web Apps</span>
+          <span>Mobile Apps</span>
+          <span>APIs</span>
+          <span>Digital Products</span>
+
+        </div>
+
+        <div class="marketplace-featured">
+
+          <div class="marketplace-featured-heading">
+            <span>FEATURED TECHNOLOGY</span>
+            <strong>Guardian-Core</strong>
+          </div>
+
+          <p>
+            Security technology for digital systems, available for
+            commercial licensing and defined business use.
+          </p>
+
+          <a href="#guardian-core" class="button">
+            View Guardian-Core
+          </a>
+
+        </div>
+
+        <div class="marketplace-commercial">
+
+          <span>COMMERCIAL MARKETPLACE</span>
+
+          <strong>
+            Technology owners can present products for qualified
+            commercial opportunities.
+          </strong>
+
+          <p>
+            Buyers can discover products, review public information
+            and begin a direct commercial discussion.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- GUARDIAN-CORE -->
+
+  <section id="guardian-core" class="section guardian-section">
+
+    <div class="guardian-card">
+
+      <div class="guardian-icon" aria-hidden="true">
+        <span>◆</span>
+      </div>
+
+      <div class="guardian-content">
+
+        <span class="eyebrow">
+          FLAGSHIP • VERIFIED • SECURITY • PROTECTION
+        </span>
+
+        <h3>Guardian-Core</h3>
+
+        <p class="guardian-tagline">
+          A verified security, protection and enforcement technology
+          platform for dependable digital systems.
+        </p>
+
+        <p>
+          Guardian-Core is a security-focused technology product designed
+          to help digital systems protect users, verify trusted activity,
+          assess risk, apply security decisions and enforce protective
+          policies.
+        </p>
+
+        <div class="guardian-capabilities">
+
+          <div>
+            <strong>Security Verification</strong>
+            <span>
+              Verify trusted interactions and security-relevant activity
+              before appropriate system actions are taken.
+            </span>
+          </div>
+
+          <div>
+            <strong>Risk Assessment</strong>
+            <span>
+              Identify and assess security and safety risks to support
+              appropriate protective decisions.
+            </span>
+          </div>
+
+          <div>
+            <strong>Protection & Enforcement</strong>
+            <span>
+              Apply protective controls and enforce security-oriented
+              decisions within supported digital systems.
+            </span>
+          </div>
+
+          <div>
+            <strong>Trusted Interactions</strong>
+            <span>
+              Help systems distinguish trusted activity from activity
+              requiring additional protection or verification.
+            </span>
+          </div>
+
+          <div>
+            <strong>Security Records</strong>
+            <span>
+              Support security-focused records and audit-oriented
+              information for dependable system operation.
+            </span>
+          </div>
+
+          <div>
+            <strong>Safety Protection</strong>
+            <span>
+              Provide security and safety-oriented mechanisms for
+              situations requiring protective system responses.
+            </span>
+          </div>
+
+          <div>
+            <strong>Security Decision Support</strong>
+            <span>
+              Help digital systems make structured security decisions
+              based on available security and risk information.
+            </span>
+          </div>
+
+          <div>
+            <strong>Digital System Protection</strong>
+            <span>
+              Provide a security foundation that can support applications,
+              platforms and other dependable digital environments.
+            </span>
+          </div>
+
+        </div>
+
+        <div class="guardian-security-model">
+
+          <div>
+            <strong>Detect</strong>
+            <span>
+              Identify relevant security or safety signals.
+            </span>
+          </div>
+
+          <div>
+            <strong>Verify</strong>
+            <span>
+              Evaluate trusted activity and available security evidence.
+            </span>
+          </div>
+
+          <div>
+            <strong>Decide</strong>
+            <span>
+              Determine an appropriate security response.
+            </span>
+          </div>
+
+          <div>
+            <strong>Enforce</strong>
+            <span>
+              Apply the appropriate protective action.
+            </span>
+          </div>
+
+        </div>
+
+        <div class="guardian-use">
+
+          <div class="guardian-commercial-heading">
+            <span>WHAT GUARDIAN-CORE CAN SUPPORT</span>
+            <strong>Security-focused digital applications</strong>
+          </div>
+
+          <p>
+            Guardian-Core can support digital platforms, applications,
+            services and systems that require security verification,
+            risk-oriented protection, trusted interactions, policy
+            enforcement and safety-focused controls.
+          </p>
+
+        </div>
+
+        <div class="guardian-verified">
+
+          <div class="guardian-commercial-heading">
+            <span>VERIFIED PRODUCT</span>
+            <strong>Documented Guardian-Core validation results</strong>
+          </div>
+
+          <p>
+            Guardian-Core has undergone a documented validation baseline.
+            The following are the recorded tests and results completed for
+            the product.
+          </p>
+
+          <div class="guardian-test-results">
+
+            <div>
+              <strong>Dependency Installation</strong>
+              <span>
+                <b>PASS</b> — Dependencies installed successfully;
+                0 vulnerabilities reported.
+              </span>
+            </div>
+
+            <div>
+              <strong>Security Audit</strong>
+              <span>
+                <b>PASS</b> — npm audit reported
+                0 vulnerabilities.
+              </span>
+            </div>
+
+            <div>
+              <strong>Code Quality</strong>
+              <span>
+                <b>PASS</b> — Lint validation completed with
+                0 errors and 0 warnings.
+              </span>
+            </div>
+
+            <div>
+              <strong>Safety Contract Tests</strong>
+              <span>
+                <b>PASS</b> — 6/6 safety contract tests passed.
+              </span>
+            </div>
+
+            <div>
+              <strong>Production Build</strong>
+              <span>
+                <b>PASS</b> — Production build completed successfully.
+              </span>
+            </div>
+
+            <div>
+              <strong>Runtime Smoke Verification</strong>
+              <span>
+                <b>PASS</b> — Core runtime endpoints and security
+                headers were verified successfully.
+              </span>
+            </div>
+
+          </div>
+
+          <p class="guardian-verification-note">
+            These results represent the documented validation baseline
+            performed for Guardian-Core. They are not presented as an
+            external certification or independent third-party security
+            certification.
+          </p>
+
+          <p>
+            Proprietary implementation details, internal security mechanisms
+            and sensitive technical information are intentionally not
+            disclosed on this public website.
+          </p>
+
+        </div>
+
+        <div class="guardian-commercial">
+
+          <div class="guardian-commercial-heading">
+            <span>COMMERCIAL TECHNOLOGY</span>
+            <strong>Available for commercial licensing or defined use</strong>
+          </div>
+
+          <p>
+            Guardian-Core is available for commercial discussion for
+            appropriate licensing, deployment or defined commercial use,
+            subject to technical evaluation and applicable agreement.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- HIBHA WELFARE FOUNDATION -->
+
+<section id="hibha" class="section hibha-section">
+
+  <div class="section-heading">
+    <span>06</span>
+    <h2>Hibba Welfare Foundation</h2>
+  </div>
+
+  <div class="hibha-card">
+
+    <div class="hibha-logo-wrap">
+      <img
+        src="assets/hibba-logo.png"
+        alt="Hibba Welfare Foundation Logo"
+        class="hibha-logo"
+      >
+    </div>
+
+    <div class="hibha-content">
+
+      <div class="hibha-kicker">
+        SKILL • EMPOWER • ELEVATE
+      </div>
+
+      <h3>Hibba Welfare Foundation</h3>
+
+      <p>
+        A welfare and skills-development initiative focused on teaching
+        practical, creative and modern skills that help people become
+        more confident, capable and self-reliant.
+      </p>
+
+      <p>
+        Hibba promotes learning, empowerment, sustainable opportunities
+        and practical pathways toward personal and economic development.
+      </p>
+
+      <div class="hibha-services">
+
+        <div class="hibha-service">
+          <span>📚</span>
+          <strong>Education & Skills</strong>
+          <small>Learning and practical skill development</small>
+        </div>
+
+        <div class="hibha-service">
+          <span>🧵</span>
+          <strong>Stitching & Embroidery</strong>
+          <small>Creative and income-generating skills</small>
+        </div>
+
+        <div class="hibha-service">
+          <span>👗</span>
+          <strong>Fashion Design</strong>
+          <small>Design, creativity and craftsmanship</small>
+        </div>
+
+        <div class="hibha-service">
+          <span>🍳</span>
+          <strong>Cooking & Food Skills</strong>
+          <small>Practical culinary and food-related training</small>
+        </div>
+
+        <div class="hibha-service">
+          <span>💻</span>
+          <strong>Digital & Modern Skills</strong>
+          <small>Technology and future-ready learning</small>
+        </div>
+
+        <div class="hibha-service">
+          <span>🌱</span>
+          <strong>Eco-Friendly Courses</strong>
+          <small>Environmentally responsible and sustainable skills</small>
+        </div>
+
+        <div class="hibha-service">
+          <span>♻️</span>
+          <strong>Sustainable Skills</strong>
+          <small>Eco-conscious products, practices and opportunities</small>
+        </div>
+
+        <div class="hibha-service">
+          <span>💼</span>
+          <strong>Self-Reliance & Livelihood</strong>
+          <small>Skills supporting self-employment and independence</small>
+        </div>
+
+        <div class="hibha-service">
+          <span>🤝</span>
+          <strong>Community Support</strong>
+          <small>Guidance, support and community empowerment</small>
+        </div>
+
+        <div class="hibha-service">
+          <span>🎓</span>
+          <strong>Growth & Development</strong>
+          <small>Building confidence, capability and opportunity</small>
+        </div>
+
+      </div>
+
+      <div class="hibha-mission">
+        <strong>Our Mission</strong>
+        <p>
+          To empower people through knowledge, practical skills,
+          sustainable learning and meaningful opportunities.
+        </p>
+      </div>
+
+      <a href="mailto:hibbawelfare@gmail.com"
+         class="hibha-contact">
+        hibbawelfare@gmail.com
+      </a>
+
+      <small class="hibha-note">
+        Professional domain email will be activated after domain registration.
+      </small>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+
+  <section id="contact" class="section">
+
+    <div class="section-heading">
+      <span>07</span>
+      <h2>Contact</h2>
+    </div>
+
+    <div class="contact-card">
+
+      <img
+        src="assets/logo.PNG"
+        alt="EmpowerDevelopers"
+        class="contact-logo"
+      >
+
+      <div>
+        <h3>EmpowerDevelopers</h3>
+
+        <p>
+          Technology & Software Development
+        </p>
+
+        <a href="mailto:empowerdevelopers@gmail.com">
+          empowerdevelopers@gmail.com
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  <div class="footer-brand">
+    <img src="assets/logo.PNG" alt="EmpowerDevelopers">
+    <div>
+      <strong>Empower Developers</strong>
+      <span>Technology & Software Development</span>
+    </div>
+  </div>
+
+  <p>
+    © <span id="year"></span> EmpowerDevelopers.
+    All rights reserved.
+  </p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

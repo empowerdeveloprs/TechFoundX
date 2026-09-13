@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="260" viewBox="0 0 260 260">
+
+  <rect width="260" height="260" fill="#08384a"/>
+
+  <!-- Ajrak diamond grid -->
+  <g fill="none" stroke="#65c9c3" stroke-width="2.5" opacity="0.48">
+
+    <path d="M130 0 L260 130 L130 260 L0 130 Z"/>
+
+    <path d="M130 28 L232 130 L130 232 L28 130 Z"/>
+
+    <path d="M130 62 L198 130 L130 198 L62 130 Z"/>
+
+    <path d="M130 88 L172 130 L130 172 L88 130 Z"/>
+
+  </g>
+
+  <!-- central Ajrak flower -->
+  <g fill="none" stroke="#a4e3df" stroke-width="3" opacity="0.58">
+
+    <circle cx="130" cy="130" r="12"/>
+
+    <path d="
+      M130 118
+      C112 104 111 83 125 76
+      C138 70 145 84 136 104
+      C145 84 158 70 171 76
+      C185 83 184 104 166 118"/>
+
+    <path d="
+      M142 130
+      C156 112 177 111 184 125
+      C190 138 176 145 156 136
+      C176 145 190 158 184 171
+      C177 185 156 184 142 166"/>
+
+    <path d="
+      M130 142
+      C148 156 149 177 135 184
+      C122 190 115 176 124 156
+      C115 176 102 190 89 184
+      C75 177 76 156 94 142"/>
+
+    <path d="
+      M118 130
+      C104 148 83 149 76 135
+      C70 122 84 115 104 124
+      C84 115 70 102 76 89
+      C83 75 104 76 118 94"/>
+
+  </g>
+
+  <!-- small Ajrak dots -->
+  <g fill="#a4e3df" opacity="0.55">
+    <circle cx="130" cy="38" r="4"/>
+    <circle cx="222" cy="130" r="4"/>
+    <circle cx="130" cy="222" r="4"/>
+    <circle cx="38" cy="130" r="4"/>
+
+    <circle cx="65" cy="65" r="3"/>
+    <circle cx="195" cy="65" r="3"/>
+    <circle cx="65" cy="195" r="3"/>
+    <circle cx="195" cy="195" r="3"/>
+  </g>
+
+  <!-- traditional border -->
+  <g fill="none" stroke="#176b86" stroke-width="7" opacity="0.55">
+    <path d="M0 12 H260"/>
+    <path d="M0 248 H260"/>
+  </g>
+
+</svg>

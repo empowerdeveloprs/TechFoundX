@@ -1,0 +1,579 @@
+document.addEventListener("DOMContentLoaded", () => {
+
+  const purposeButtons = document.querySelectorAll("[data-purpose]");
+  const purposeFlow = document.getElementById("purpose-flow");
+  const purposeTitle = document.getElementById("purpose-title");
+  const purposeDescription = document.getElementById("purpose-description");
+  const questionArea = document.getElementById("question-area");
+  const purposeResult = document.getElementById("purpose-result");
+
+  const state = {
+    purpose: null,
+    answers: {}
+  };
+
+  const questionSets = {
+
+    buyer: {
+      title: "Tell us what you want to buy",
+      description:
+        "Answer the relevant questions so the marketplace can show technology matching your requirements.",
+
+      compulsory: [
+        {
+          id: "technology_type",
+          label: "What type of technology are you looking for?",
+          type: "select",
+          options: [
+            "Software",
+            "SaaS",
+            "Artificial Intelligence",
+            "AI Agent",
+            "Mobile Application",
+            "Web Application",
+            "API",
+            "Cybersecurity",
+            "Automation",
+            "Digital Platform",
+            "Other"
+          ]
+        },
+        {
+          id: "commercial_objective",
+          label: "What is your main objective?",
+          type: "select",
+          options: [
+            "Acquire a technology",
+            "Use a technology",
+            "Build a business",
+            "Expand an existing business",
+            "Replace an existing system",
+            "Other"
+          ]
+        },
+        {
+          id: "deal_type",
+          label: "What type of deal do you prefer?",
+          type: "select",
+          options: [
+            "Purchase",
+            "Commercial License",
+            "Subscription",
+            "Open to suitable options"
+          ]
+        }
+      ],
+
+      supplementary: [
+        {
+          id: "technology_maturity",
+          label: "What technology maturity do you prefer?",
+          type: "select",
+          options: [
+            "Prototype",
+            "MVP",
+            "Production Ready",
+            "Established Product",
+            "No Preference"
+          ]
+        },
+        {
+          id: "target_market",
+          label: "Which market are you targeting?",
+          type: "text",
+          placeholder: "Country, region or global"
+        },
+        {
+          id: "timeline",
+          label: "When do you want to proceed?",
+          type: "select",
+          options: [
+            "Immediately",
+            "Within 1 month",
+            "Within 3 months",
+            "Within 6 months",
+            "Exploring"
+          ]
+        },
+        {
+          id: "additional_requirement",
+          label: "What additional requirement should we consider?",
+          type: "textarea",
+          placeholder: "Describe any important requirement"
+        }
+      ]
+    },
+
+
+    license: {
+      title: "Tell us what you want to license",
+      description:
+        "We will use your requirements to show relevant technologies available for licensing.",
+
+      compulsory: [
+        {
+          id: "license_technology_type",
+          label: "What type of technology do you want to license?",
+          type: "select",
+          options: [
+            "Software",
+            "Artificial Intelligence",
+            "AI Agent",
+            "SaaS",
+            "API",
+            "Cybersecurity",
+            "Automation",
+            "Digital Platform",
+            "Other"
+          ]
+        },
+        {
+          id: "license_use",
+          label: "How will you use the licensed technology?",
+          type: "select",
+          options: [
+            "Internal business use",
+            "Commercial deployment",
+            "Resale",
+            "Integration",
+            "Product development",
+            "Other"
+          ]
+        },
+        {
+          id: "license_model",
+          label: "Which licensing model do you prefer?",
+          type: "select",
+          options: [
+            "One-time license",
+            "Annual license",
+            "Subscription",
+            "Revenue sharing",
+            "Open to negotiation"
+          ]
+        }
+      ],
+
+      supplementary: [
+        {
+          id: "license_market",
+          label: "Where will the technology be used?",
+          type: "text",
+          placeholder: "Country, region or global"
+        },
+        {
+          id: "license_duration",
+          label: "How long do you expect to use it?",
+          type: "select",
+          options: [
+            "Short term",
+            "1 year",
+            "2–3 years",
+            "Long term",
+            "No preference"
+          ]
+        },
+        {
+          id: "license_requirements",
+          label: "What additional licensing requirements matter?",
+          type: "textarea",
+          placeholder: "Describe your requirements"
+        }
+      ]
+    },
+
+
+    seller: {
+      title: "Prepare your technology for the marketplace",
+      description:
+        "Your answers will progressively build the information profile for your technology product.",
+
+      compulsory: [
+        {
+          id: "product_name",
+          label: "What is the name of your technology product?",
+          type: "text",
+          placeholder: "Product name"
+        },
+        {
+          id: "product_type",
+          label: "What type of technology are you offering?",
+          type: "select",
+          options: [
+            "Software",
+            "SaaS",
+            "Artificial Intelligence",
+            "AI Agent",
+            "Mobile Application",
+            "Web Application",
+            "API",
+            "Cybersecurity",
+            "Automation",
+            "Digital Platform",
+            "Other"
+          ]
+        },
+        {
+          id: "asking_price",
+          label: "What is your asking price?",
+          type: "number",
+          placeholder: "Required asking price"
+        },
+        {
+          id: "currency",
+          label: "What currency is the asking price?",
+          type: "select",
+          options: [
+            "USD",
+            "EUR",
+            "GBP",
+            "PKR",
+            "AED",
+            "SAR",
+            "Other"
+          ]
+        },
+        {
+          id: "commercial_model",
+          label: "What commercial model are you offering?",
+          type: "select",
+          options: [
+            "Sale",
+            "Commercial License",
+            "Subscription",
+            "Enterprise License",
+            "Other"
+          ]
+        }
+      ],
+
+      supplementary: [
+        {
+          id: "product_description",
+          label: "What does your technology do?",
+          type: "textarea",
+          placeholder: "Describe the product"
+        },
+        {
+          id: "technology_capabilities",
+          label: "What are its main capabilities?",
+          type: "textarea",
+          placeholder: "Main features and capabilities"
+        },
+        {
+          id: "technology_maturity",
+          label: "What is the current maturity level?",
+          type: "select",
+          options: [
+            "Concept",
+            "Prototype",
+            "MVP",
+            "Production Ready",
+            "Established Product"
+          ]
+        },
+        {
+          id: "ai_capabilities",
+          label: "Does the product use Artificial Intelligence?",
+          type: "select",
+          options: [
+            "Yes",
+            "No",
+            "AI is optional"
+          ]
+        },
+        {
+          id: "target_market",
+          label: "Which market is the product intended for?",
+          type: "text",
+          placeholder: "Country, region or global"
+        },
+        {
+          id: "ownership_model",
+          label: "What commercial rights are available?",
+          type: "select",
+          options: [
+            "Full product sale",
+            "License rights",
+            "Regional rights",
+            "Usage rights",
+            "Other"
+          ]
+        },
+        {
+          id: "additional_information",
+          label: "What additional information should buyers know?",
+          type: "textarea",
+          placeholder: "Additional product information"
+        }
+      ]
+    },
+
+
+    partner: {
+      title: "Tell us what kind of partner you need",
+      description:
+        "We will use your requirements to identify relevant partnership opportunities.",
+
+      compulsory: [
+        {
+          id: "partner_type",
+          label: "What type of partner are you looking for?",
+          type: "select",
+          options: [
+            "Technology Partner",
+            "Development Partner",
+            "Business Partner",
+            "Investment Partner",
+            "Distribution Partner",
+            "Strategic Partner",
+            "Other"
+          ]
+        },
+        {
+          id: "partnership_objective",
+          label: "What is your main partnership objective?",
+          type: "textarea",
+          placeholder: "Describe the objective"
+        }
+      ],
+
+      supplementary: [
+        {
+          id: "partner_market",
+          label: "Which market should the partner support?",
+          type: "text",
+          placeholder: "Country, region or global"
+        },
+        {
+          id: "partner_experience",
+          label: "What experience should the partner have?",
+          type: "textarea",
+          placeholder: "Relevant experience"
+        }
+      ]
+    },
+
+
+    explore: {
+      title: "Tell us what you want to explore",
+      description:
+        "Choose your interests and we will focus your marketplace experience around them.",
+
+      compulsory: [
+        {
+          id: "explore_area",
+          label: "What would you like to explore?",
+          type: "select",
+          options: [
+            "Software",
+            "Artificial Intelligence",
+            "Cybersecurity",
+            "SaaS",
+            "Mobile Applications",
+            "Web Applications",
+            "APIs",
+            "Automation",
+            "Digital Platforms",
+            "All Technology"
+          ]
+        }
+      ],
+
+      supplementary: [
+        {
+          id: "explore_maturity",
+          label: "Which maturity level interests you?",
+          type: "select",
+          options: [
+            "Any",
+            "Prototype",
+            "MVP",
+            "Production Ready",
+            "Established Products"
+          ]
+        }
+      ]
+    }
+
+  };
+
+
+  function createQuestion(question, required = false) {
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "market-question";
+
+    const label = document.createElement("label");
+    label.htmlFor = question.id;
+    label.innerHTML =
+      question.label +
+      (required ? ' <span class="required">*</span>' : '');
+
+    wrapper.appendChild(label);
+
+    let field;
+
+    if (question.type === "select") {
+
+      field = document.createElement("select");
+
+      const placeholder = document.createElement("option");
+      placeholder.value = "";
+      placeholder.textContent = "Select an option";
+      field.appendChild(placeholder);
+
+      question.options.forEach(option => {
+        const item = document.createElement("option");
+        item.value = option;
+        item.textContent = option;
+        field.appendChild(item);
+      });
+
+    } else if (question.type === "textarea") {
+
+      field = document.createElement("textarea");
+      field.placeholder = question.placeholder || "";
+
+    } else {
+
+      field = document.createElement("input");
+      field.type = question.type || "text";
+      field.placeholder = question.placeholder || "";
+    }
+
+    field.id = question.id;
+    field.name = question.id;
+
+    field.addEventListener("input", () => {
+      state.answers[question.id] = field.value;
+    });
+
+    field.addEventListener("change", () => {
+      state.answers[question.id] = field.value;
+    });
+
+    wrapper.appendChild(field);
+
+    return wrapper;
+  }
+
+
+  function renderQuestions(purpose) {
+
+    const set = questionSets[purpose];
+
+    if (!set) return;
+
+    questionArea.innerHTML = "";
+
+    const form = document.createElement("form");
+    form.id = "purpose-question-form";
+
+    const compulsoryTitle = document.createElement("h3");
+    compulsoryTitle.textContent = "Compulsory Information";
+    form.appendChild(compulsoryTitle);
+
+    set.compulsory.forEach(question => {
+      form.appendChild(createQuestion(question, true));
+    });
+
+
+    if (set.supplementary.length) {
+
+      const supplementaryTitle = document.createElement("h3");
+      supplementaryTitle.textContent = "Supplementary Information";
+
+      form.appendChild(supplementaryTitle);
+
+      set.supplementary.forEach(question => {
+        form.appendChild(createQuestion(question, false));
+      });
+    }
+
+
+    const actions = document.createElement("div");
+    actions.className = "question-actions";
+
+    const continueButton = document.createElement("button");
+    continueButton.type = "submit";
+    continueButton.textContent = "Continue";
+
+    actions.appendChild(continueButton);
+    form.appendChild(actions);
+
+    form.addEventListener("submit", event => {
+
+      event.preventDefault();
+
+      const missing = set.compulsory.find(question => {
+        return !state.answers[question.id];
+      });
+
+      if (missing) {
+
+        const field = document.getElementById(missing.id);
+
+        if (field) {
+          field.focus();
+        }
+
+        alert("Please complete all compulsory information.");
+        return;
+      }
+
+      purposeResult.hidden = false;
+
+      purposeResult.querySelector("h3").textContent =
+        purpose === "seller"
+          ? "Your technology profile is ready for the next stage."
+          : "Your marketplace experience is ready for the next stage.";
+
+      purposeResult.querySelector("p").textContent =
+        purpose === "seller"
+          ? "The information you provide will be used to progressively build your technology listing and present the appropriate marketplace facilities."
+          : "The information you provide will be used to focus the marketplace experience on your selected purpose.";
+
+      purposeResult.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+    });
+
+    questionArea.appendChild(form);
+  }
+
+
+  purposeButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      const purpose = button.dataset.purpose;
+
+      state.purpose = purpose;
+      state.answers = {};
+
+      const set = questionSets[purpose];
+
+      if (!set) return;
+
+      purposeTitle.textContent = set.title;
+      purposeDescription.textContent = set.description;
+
+      purposeFlow.hidden = false;
+
+      purposeResult.hidden = true;
+
+      renderQuestions(purpose);
+
+      purposeFlow.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+    });
+
+  });
+
+});

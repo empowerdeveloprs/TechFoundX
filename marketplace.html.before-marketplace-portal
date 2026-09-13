@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>EmpowerDevelopers Marketplace</title>
+
+  <meta
+    name="description"
+    content="EmpowerDevelopers — A global marketplace for technology, software and artificial intelligence."
+  >
+
+  <link rel="stylesheet" href="marketplace.css">
+</head>
+
+<body>
+
+<header class="market-header">
+
+  <a href="marketplace.html" class="market-brand">
+    <img src="assets/logo.PNG" alt="EmpowerDevelopers">
+
+    <div>
+      <strong>EmpowerDevelopers</strong>
+      <span>Global Technology Marketplace</span>
+    </div>
+  </a>
+
+</header>
+
+
+<main>
+
+  <!-- MARKETPLACE INTRODUCTION -->
+
+  <section class="market-welcome">
+
+    <div class="welcome-copy">
+
+      <span class="eyebrow">
+        GLOBAL TECHNOLOGY MARKETPLACE
+      </span>
+
+      <h1>
+        A marketplace for
+        <span>technology and AI.</span>
+      </h1>
+
+      <p>
+        EmpowerDevelopers is a global marketplace where technology,
+        software, digital products, platforms and artificial intelligence
+        solutions can be discovered, presented, bought, licensed or
+        offered for commercial opportunity.
+      </p>
+
+      <p>
+        From software products and SaaS platforms to Artificial Intelligence,
+        APIs, cybersecurity, mobile applications, web applications,
+        automation and emerging technologies — technology opportunities
+        can be placed and discovered here.
+      </p>
+
+    </div>
+
+
+    <!-- PURPOSE SELECTION -->
+
+    <div class="purpose-card">
+
+      <span class="eyebrow">
+        WELCOME
+      </span>
+
+      <h2>
+        What brings you here?
+      </h2>
+
+      <p>
+        Select your purpose. We will ask only the questions relevant to
+        your purpose and then provide the marketplace experience,
+        information and facilities you need.
+      </p>
+
+
+      <div class="purpose-grid">
+
+        <button data-purpose="buyer">
+          <strong>Buy Technology</strong>
+          <span>
+            Find technology products and solutions for acquisition or use.
+          </span>
+        </button>
+
+
+        <button data-purpose="license">
+          <strong>License Technology</strong>
+          <span>
+            Find technology available for commercial licensing.
+          </span>
+        </button>
+
+
+        <button data-purpose="seller">
+          <strong>Sell / List Technology</strong>
+          <span>
+            Place your software, AI or technology product in the marketplace.
+          </span>
+        </button>
+
+
+        <button data-purpose="partner">
+          <strong>Find a Partner</strong>
+          <span>
+            Find development, business, investment or distribution partners.
+          </span>
+        </button>
+
+
+        <button data-purpose="explore">
+          <strong>Explore Marketplace</strong>
+          <span>
+            Explore technology opportunities before choosing a specific purpose.
+          </span>
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PURPOSE-BASED EXPERIENCE -->
+
+  <section
+    id="purpose-flow"
+    class="purpose-flow"
+    hidden
+  >
+
+    <div class="section-title">
+
+      <span>PERSONALIZED MARKETPLACE</span>
+
+      <h2 id="purpose-title">
+        Continue
+      </h2>
+
+      <p id="purpose-description">
+        Answer the questions relevant to your purpose.
+      </p>
+
+    </div>
+
+
+    <div
+      id="question-area"
+      class="question-area"
+    >
+
+    </div>
+
+
+    <div
+      id="purpose-result"
+      class="purpose-result"
+      hidden
+    >
+
+      <h3>
+        Your marketplace experience is being prepared.
+      </h3>
+
+      <p>
+        The information you provide will be used to present the
+        marketplace experience and facilities relevant to your selected
+        purpose.
+      </p>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer class="market-footer">
+
+  <strong>
+    EmpowerDevelopers
+  </strong>
+
+  <span>
+    Global Technology Marketplace
+  </span>
+
+</footer>
+
+
+<script src="marketplace.js"></script>
+
+</body>
+</html>
