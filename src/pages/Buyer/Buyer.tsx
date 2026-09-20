@@ -1,0 +1,226 @@
+import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { buyerQuestions, buyerSections } from '../../data/buyerRequirements'
+import './Buyer.css'
+
+type Answers = Record<string, string | boolean>
+
+function Buyer() {
+  const [answers, setAnswers] = useState<Answers>({})
+  const [submitted, setSubmitted] = useState(false)
+
+  const visibleQuestions = useMemo(() => {
+    return buyerQuestions.filter((question) => {
+      if (!question.condition) return true
+
+      const value = answers[question.condition.field]
+
+      return question.condition.values.includes(String(value))
+    })
+  }, [answers])
+
+  const completedRequired = visibleQuestions.filter((question) => {
+    if (!question.required) return false
+
+    const value = answers[question.id]
+
+    return value !== undefined && value !== '' && value !== false
+  }).length
+
+  const totalRequired = visibleQuestions.filter(
+    (question) => question.required
+  ).length
+
+  const progress =
+    totalRequired === 0
+      ? 0
+      : Math.round((completedRequired / totalRequired) * 100)
+
+  const updateAnswer = (id: string, value: string | boolean) => {
+    setAnswers((current) => ({
+      ...current,
+      [id]: value,
+    }))
+
+    setSubmitted(false)
+  }
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    const missing = visibleQuestions.some((question) => {
+      if (!question.required) return false
+
+      const value = answers[question.id]
+
+      return value === undefined || value === '' || value === false
+    })
+
+    if (missing) {
+      setSubmitted(false)
+      return
+    }
+
+    setSubmitted(true)
+  }
+
+  return (
+    <main className="buyer-page">
+      <section className="buyer-header">
+        <span className="eyebrow">BUYER ONBOARDING</span>
+
+        <h1>Tell Us What Technology You Need</h1>
+
+        <p>
+          Tech FounDX uses progressive requirements. Information already
+          provided in your participant profile can be reused, while additional
+          buyer-specific information is requested only when applicable.
+        </p>
+
+        <div className="buyer-progress">
+          <div className="buyer-progress-top">
+            <span>Required information</span>
+            <strong>{progress}%</strong>
+          </div>
+
+          <div className="buyer-progress-track">
+            <div
+              className="buyer-progress-fill"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+        </div>
+      </section>
+
+      <form className="buyer-form" onSubmit={handleSubmit}>
+        {buyerSections.map((section) => {
+          const sectionQuestions = visibleQuestions.filter(
+            (question) => question.section === section.id
+          )
+
+          if (sectionQuestions.length === 0) return null
+
+          return (
+            <section className="buyer-section" key={section.id}>
+              <div className="buyer-section-heading">
+                <span className="buyer-section-number">
+                  {section.title.split(' — ')[0]}
+                </span>
+
+                <div>
+                  <h2>{section.title.split(' — ')[1]}</h2>
+                  <p>{section.description}</p>
+                </div>
+              </div>
+
+              <div className="buyer-fields">
+                {sectionQuestions.map((question) => {
+                  const value = answers[question.id]
+
+                  return (
+                    <label className="buyer-field" key={question.id}>
+                      <span className="buyer-label">
+                        {question.label}
+                        {question.required && (
+                          <span className="buyer-required"> *</span>
+                        )}
+                      </span>
+
+                      {question.description && (
+                        <span className="buyer-description">
+                          {question.description}
+                        </span>
+                      )}
+
+                      {question.type === 'textarea' && (
+                        <textarea
+                          value={String(value ?? '')}
+                          required={question.required}
+                          rows={5}
+                          onChange={(event) =>
+                            updateAnswer(question.id, event.target.value)
+                          }
+                        />
+                      )}
+
+                      {question.type === 'select' && (
+                        <select
+                          value={String(value ?? '')}
+                          required={question.required}
+                          onChange={(event) =>
+                            updateAnswer(question.id, event.target.value)
+                          }
+                        >
+                          <option value="">Select an option</option>
+
+                          {question.options?.map((option) => (
+                            <option value={option} key={option}>
+                              {option}
+                            </option>
+                          ))}
+                        </select>
+                      )}
+
+                      {(question.type === 'text' ||
+                        question.type === 'email' ||
+                        question.type === 'tel') && (
+                        <input
+                          type={question.type}
+                          value={String(value ?? '')}
+                          required={question.required}
+                          onChange={(event) =>
+                            updateAnswer(question.id, event.target.value)
+                          }
+                        />
+                      )}
+
+                      {question.type === 'checkbox' && (
+                        <span className="buyer-checkbox">
+                          <input
+                            type="checkbox"
+                            checked={Boolean(value)}
+                            required={question.required}
+                            onChange={(event) =>
+                              updateAnswer(question.id, event.target.checked)
+                            }
+                          />
+                          <span>{question.label}</span>
+                        </span>
+                      )}
+                    </label>
+                  )
+                })}
+              </div>
+            </section>
+          )
+        })}
+
+        {submitted && (
+          <div className="buyer-success" role="status">
+            <strong>Buyer requirements completed.</strong>
+            <p>
+              This is currently a frontend workflow. No information has been
+              submitted to a live backend and no verification has been
+              represented as completed.
+            </p>
+          </div>
+        )}
+
+        <div className="buyer-actions">
+          <Link
+            className="button button-outline"
+            to="/requirements?purpose=buy"
+          >
+            Back to Requirements
+          </Link>
+
+          <button className="button button-gold" type="submit">
+            Submit Buyer Requirements
+          </button>
+        </div>
+      </form>
+    </main>
+  )
+}
+
+export default Buyer

@@ -1,0 +1,1515 @@
+:root {
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+
+  color: #1c2b39;
+  background: #f7f3eb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  min-width: 320px;
+  background: #f7f3eb;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #f7f3eb;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid #c69a4a;
+  outline-offset: 3px;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* =========================================================
+   TECH FOUNDX — MARKETPLACE COLOR SYSTEM
+   Header intentionally untouched.
+   ========================================================= */
+
+:root {
+  --tfx-sky-blue: #87CEEB;
+  --tfx-sky-blue-soft: #EAF7FC;
+  --tfx-off-white: #FAF8F2;
+  --tfx-dark-gold: #B08D3C;
+  --tfx-dark-gold-soft: #D8C28A;
+  --tfx-navy-blue: #0B1F3A;
+  --tfx-navy-soft: #163451;
+}
+
+/* Main marketplace background */
+body {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(135, 206, 235, 0.12),
+      rgba(250, 248, 242, 0.96) 42%,
+      rgba(135, 206, 235, 0.08)
+    ),
+    var(--tfx-off-white);
+  color: var(--tfx-navy-blue);
+}
+
+/* Subtle marketplace atmosphere */
+main {
+  background:
+    radial-gradient(
+      circle at 12% 12%,
+      rgba(135, 206, 235, 0.13),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 88% 82%,
+      rgba(176, 141, 60, 0.07),
+      transparent 28%
+    );
+}
+
+/* Soft Tech FounDX double-color visual treatment */
+.brand:not(.luxury-brand),
+.tfx-brand-mark {
+  color: var(--tfx-navy-blue);
+  text-shadow:
+    1px 0 0 rgba(176, 141, 60, 0.42),
+    0 1px 8px rgba(135, 206, 235, 0.16);
+}
+
+.tfx-brand-mark .tfx-brand-gold,
+.tfx-brand-gold {
+  color: var(--tfx-dark-gold);
+}
+
+.tfx-brand-mark .tfx-brand-blue,
+.tfx-brand-blue {
+  color: var(--tfx-navy-blue);
+}
+
+/* Marketplace cards */
+.card,
+.technology-card,
+.requirement-card,
+.purpose-option,
+.tc-card,
+.buyer-section {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.90),
+      rgba(234, 247, 252, 0.74)
+    );
+  border-color: rgba(11, 31, 58, 0.10);
+  box-shadow:
+    0 10px 28px rgba(11, 31, 58, 0.07),
+    0 2px 8px rgba(176, 141, 60, 0.06);
+}
+
+/* Gold marketplace accents */
+.button-gold,
+button.button-gold {
+  background: var(--tfx-dark-gold);
+  border-color: var(--tfx-dark-gold);
+  color: var(--tfx-off-white);
+}
+
+.button-gold:hover,
+button.button-gold:hover {
+  background: #98782F;
+  border-color: #98782F;
+}
+
+/* Secondary blue accents */
+.button,
+a.button {
+  border-color: rgba(11, 31, 58, 0.20);
+}
+
+a {
+  color: var(--tfx-navy-blue);
+}
+
+a:hover {
+  color: var(--tfx-dark-gold);
+}
+
+/* Inputs */
+input,
+select,
+textarea {
+  background: rgba(250, 248, 242, 0.92);
+  border-color: rgba(11, 31, 58, 0.16);
+  color: var(--tfx-navy-blue);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--tfx-dark-gold);
+  box-shadow: 0 0 0 3px rgba(135, 206, 235, 0.24);
+}
+
+/* =========================================================
+   FOOTER
+   Navy Blue + Dark Gold
+   ========================================================= */
+
+.site-footer,
+footer {
+  background:
+    linear-gradient(
+      135deg,
+      var(--tfx-navy-blue),
+      #102B49 58%,
+      #0B1F3A
+    );
+  color: var(--tfx-off-white);
+  border-top: 1px solid rgba(176, 141, 60, 0.55);
+  box-shadow:
+    0 -8px 30px rgba(11, 31, 58, 0.12);
+}
+
+.site-footer a,
+footer a {
+  color: var(--tfx-off-white);
+}
+
+.site-footer a:hover,
+footer a:hover {
+  color: var(--tfx-dark-gold-soft);
+}
+
+.site-footer h1,
+.site-footer h2,
+.site-footer h3,
+.site-footer strong,
+footer h1,
+footer h2,
+footer h3,
+footer strong {
+  color: var(--tfx-dark-gold-soft);
+}
+
+.site-footer small,
+footer small {
+  color: rgba(250, 248, 242, 0.72);
+}
+
+/* Thin luxury gold footer line */
+.site-footer::before,
+footer::before {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 100%;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--tfx-dark-gold),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   TECH FOUNDX — FINAL VISUAL DESIGN OVERRIDES
+   DESIGN ONLY — HEADER UNTOUCHED
+   ========================================================= */
+
+:root {
+  --tfx-sky-blue: #87CEEB;
+  --tfx-sky-blue-soft: #EAF7FC;
+  --tfx-off-white: #FAF8F2;
+  --tfx-dark-gold: #B08D3C;
+  --tfx-dark-gold-soft: #D8C28A;
+  --tfx-navy-blue: #0B1F3A;
+  --tfx-navy-soft: #163451;
+}
+
+/* Main background — Sky Blue + Off-White */
+body {
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(135, 206, 235, 0.18),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 90% 85%,
+      rgba(176, 141, 60, 0.06),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      #EAF7FC 0%,
+      #FAF8F2 46%,
+      #F4FBFD 100%
+    );
+  color: var(--tfx-navy-blue);
+}
+
+/* Soft marketplace surface */
+main {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.12),
+      rgba(135, 206, 235, 0.035)
+    );
+}
+
+/* =========================================================
+   SUBTLE DOUBLE-COLOR TECH FOUNDX
+   Navy Blue + Dark Gold
+   ========================================================= */
+
+.tfx-brand-mark {
+  color: var(--tfx-navy-blue);
+  letter-spacing: 0.025em;
+  text-shadow:
+    1px 0 rgba(176, 141, 60, 0.42),
+    0 2px 10px rgba(11, 31, 58, 0.10);
+}
+
+.tfx-brand-blue {
+  color: var(--tfx-navy-blue);
+}
+
+.tfx-brand-gold {
+  color: var(--tfx-dark-gold);
+}
+
+/* Generic brand text treatment where already present */
+.brand:not(.luxury-brand) {
+  text-shadow:
+    1px 0 rgba(176, 141, 60, 0.30),
+    0 2px 8px rgba(11, 31, 58, 0.08);
+}
+
+/* =========================================================
+   FOOTER — NAVY BLUE + DARK GOLD
+   ========================================================= */
+
+.site-footer {
+  background:
+    linear-gradient(
+      135deg,
+      #0B1F3A 0%,
+      #102A43 55%,
+      #081C2F 100%
+    );
+  color: #FAF8F2;
+  border-top: 2px solid var(--tfx-dark-gold);
+  box-shadow:
+    0 -12px 35px rgba(11, 31, 58, 0.14);
+}
+
+.site-footer a {
+  color: #FAF8F2;
+  transition:
+    color 180ms ease,
+    opacity 180ms ease;
+}
+
+.site-footer a:hover {
+  color: var(--tfx-dark-gold-soft);
+}
+
+.site-footer h1,
+.site-footer h2,
+.site-footer h3,
+.site-footer strong {
+  color: var(--tfx-dark-gold-soft);
+}
+
+.site-footer small {
+  color: rgba(250, 248, 242, 0.72);
+}
+
+/* Elegant gold footer accent */
+.site-footer::before {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 100%;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(176, 141, 60, 0.35) 20%,
+      var(--tfx-dark-gold) 50%,
+      rgba(176, 141, 60, 0.35) 80%,
+      transparent 100%
+    );
+}
+
+/* =========================================================
+   DESIGN-ONLY FORM / CARD REFINEMENT
+   ========================================================= */
+
+input,
+select,
+textarea {
+  background: rgba(250, 248, 242, 0.88);
+  color: var(--tfx-navy-blue);
+  border-color: rgba(11, 31, 58, 0.14);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--tfx-dark-gold);
+  box-shadow:
+    0 0 0 3px rgba(135, 206, 235, 0.20);
+}
+
+/* Gold action styling */
+.button-gold {
+  background: var(--tfx-dark-gold);
+  border-color: var(--tfx-dark-gold);
+  color: #FAF8F2;
+}
+
+.button-gold:hover {
+  background: #98782F;
+  border-color: #98782F;
+}
+
+/* Soft blue/gold visual depth */
+.card,
+.technology-card,
+.requirement-card,
+.purpose-option,
+.tc-card,
+.buyer-section {
+  box-shadow:
+    0 10px 28px rgba(11, 31, 58, 0.06),
+    0 2px 10px rgba(176, 141, 60, 0.05);
+}
+
+
+/* =========================================================
+   TECH FOUNDX — FINAL VISUAL DESIGN OVERRIDES
+   DESIGN ONLY — HEADER UNTOUCHED
+   ========================================================= */
+
+:root {
+  --tfx-sky-blue: #87CEEB;
+  --tfx-sky-blue-soft: #EAF7FC;
+  --tfx-off-white: #FAF8F2;
+  --tfx-dark-gold: #B08D3C;
+  --tfx-dark-gold-soft: #D8C28A;
+  --tfx-navy-blue: #0B1F3A;
+  --tfx-navy-soft: #163451;
+}
+
+/* Main background — Sky Blue + Off-White */
+body {
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(135, 206, 235, 0.18),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 90% 85%,
+      rgba(176, 141, 60, 0.06),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      #EAF7FC 0%,
+      #FAF8F2 46%,
+      #F4FBFD 100%
+    );
+  color: var(--tfx-navy-blue);
+}
+
+/* Soft marketplace surface */
+main {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.12),
+      rgba(135, 206, 235, 0.035)
+    );
+}
+
+/* =========================================================
+   SUBTLE DOUBLE-COLOR TECH FOUNDX
+   Navy Blue + Dark Gold
+   ========================================================= */
+
+.tfx-brand-mark {
+  color: var(--tfx-navy-blue);
+  letter-spacing: 0.025em;
+  text-shadow:
+    1px 0 rgba(176, 141, 60, 0.42),
+    0 2px 10px rgba(11, 31, 58, 0.10);
+}
+
+.tfx-brand-blue {
+  color: var(--tfx-navy-blue);
+}
+
+.tfx-brand-gold {
+  color: var(--tfx-dark-gold);
+}
+
+/* Generic brand text treatment where already present */
+.brand:not(.luxury-brand) {
+  text-shadow:
+    1px 0 rgba(176, 141, 60, 0.30),
+    0 2px 8px rgba(11, 31, 58, 0.08);
+}
+
+/* =========================================================
+   FOOTER — NAVY BLUE + DARK GOLD
+   ========================================================= */
+
+.site-footer {
+  background:
+    linear-gradient(
+      135deg,
+      #0B1F3A 0%,
+      #102A43 55%,
+      #081C2F 100%
+    );
+  color: #FAF8F2;
+  border-top: 2px solid var(--tfx-dark-gold);
+  box-shadow:
+    0 -12px 35px rgba(11, 31, 58, 0.14);
+}
+
+.site-footer a {
+  color: #FAF8F2;
+  transition:
+    color 180ms ease,
+    opacity 180ms ease;
+}
+
+.site-footer a:hover {
+  color: var(--tfx-dark-gold-soft);
+}
+
+.site-footer h1,
+.site-footer h2,
+.site-footer h3,
+.site-footer strong {
+  color: var(--tfx-dark-gold-soft);
+}
+
+.site-footer small {
+  color: rgba(250, 248, 242, 0.72);
+}
+
+/* Elegant gold footer accent */
+.site-footer::before {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 100%;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(176, 141, 60, 0.35) 20%,
+      var(--tfx-dark-gold) 50%,
+      rgba(176, 141, 60, 0.35) 80%,
+      transparent 100%
+    );
+}
+
+/* =========================================================
+   DESIGN-ONLY FORM / CARD REFINEMENT
+   ========================================================= */
+
+input,
+select,
+textarea {
+  background: rgba(250, 248, 242, 0.88);
+  color: var(--tfx-navy-blue);
+  border-color: rgba(11, 31, 58, 0.14);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--tfx-dark-gold);
+  box-shadow:
+    0 0 0 3px rgba(135, 206, 235, 0.20);
+}
+
+/* Gold action styling */
+.button-gold {
+  background: var(--tfx-dark-gold);
+  border-color: var(--tfx-dark-gold);
+  color: #FAF8F2;
+}
+
+.button-gold:hover {
+  background: #98782F;
+  border-color: #98782F;
+}
+
+/* Soft blue/gold visual depth */
+.card,
+.technology-card,
+.requirement-card,
+.purpose-option,
+.tc-card,
+.buyer-section {
+  box-shadow:
+    0 10px 28px rgba(11, 31, 58, 0.06),
+    0 2px 10px rgba(176, 141, 60, 0.05);
+}
+
+
+/* =========================================================
+   TECH FOUNDX — DESIGN REFINEMENT
+   Typography / Cards / Buttons
+   DESIGN ONLY — HEADER UNTOUCHED
+   ========================================================= */
+
+/* Global typography */
+body {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  letter-spacing: 0.005em;
+}
+
+/* Main headings */
+main h1,
+main h2,
+main h3 {
+  color: var(--tfx-navy-blue);
+  letter-spacing: -0.015em;
+}
+
+main h1 {
+  text-shadow:
+    0 2px 12px rgba(11, 31, 58, 0.06);
+}
+
+/* Gold heading accents where existing content uses emphasis */
+main strong {
+  color: var(--tfx-navy-blue);
+}
+
+/* Marketplace cards */
+.card,
+.technology-card,
+.requirement-card,
+.purpose-option,
+.tc-card,
+.buyer-section {
+  border: 1px solid rgba(11, 31, 58, 0.09);
+  border-radius: 14px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.94),
+      rgba(234, 247, 252, 0.68)
+    );
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.card:hover,
+.technology-card:hover,
+.requirement-card:hover,
+.purpose-option:hover {
+  transform: translateY(-2px);
+  border-color: rgba(176, 141, 60, 0.34);
+  box-shadow:
+    0 14px 34px rgba(11, 31, 58, 0.09),
+    0 4px 12px rgba(176, 141, 60, 0.06);
+}
+
+/* Primary buttons */
+.button,
+button {
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease,
+    border-color 160ms ease;
+}
+
+.button:hover,
+button:hover {
+  transform: translateY(-1px);
+}
+
+/* Dark navy secondary actions */
+.button:not(.button-gold) {
+  color: var(--tfx-navy-blue);
+  border-color: rgba(11, 31, 58, 0.18);
+}
+
+.button:not(.button-gold):hover {
+  border-color: rgba(176, 141, 60, 0.45);
+  box-shadow:
+    0 6px 18px rgba(11, 31, 58, 0.08);
+}
+
+/* Gold primary action */
+.button-gold,
+button.button-gold {
+  box-shadow:
+    0 6px 18px rgba(176, 141, 60, 0.18);
+}
+
+.button-gold:hover,
+button.button-gold:hover {
+  box-shadow:
+    0 8px 22px rgba(176, 141, 60, 0.24);
+}
+
+/* Subtle separators */
+hr {
+  border: 0;
+  border-top: 1px solid rgba(11, 31, 58, 0.10);
+}
+
+/* Selection color */
+::selection {
+  background: rgba(135, 206, 235, 0.42);
+  color: var(--tfx-navy-blue);
+}
+
+/* Mobile refinement */
+@media (max-width: 600px) {
+  main h1 {
+    letter-spacing: -0.01em;
+  }
+
+  .card,
+  .technology-card,
+  .requirement-card,
+  .purpose-option,
+  .tc-card,
+  .buyer-section {
+    border-radius: 12px;
+  }
+}
+
+
+/* =========================================================
+   TECH FOUNDX — FINAL MARKETPLACE VISUAL LAYER
+   DESIGN ONLY — HEADER UNTOUCHED
+   ========================================================= */
+
+/* Marketplace page atmosphere */
+main {
+  color: var(--tfx-navy-blue);
+}
+
+/* Hero */
+.hero-content {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(250, 248, 242, 0.94),
+      rgba(234, 247, 252, 0.82)
+    );
+  border: 1px solid rgba(176, 141, 60, 0.18);
+  box-shadow:
+    0 18px 45px rgba(11, 31, 58, 0.10),
+    0 4px 14px rgba(176, 141, 60, 0.06);
+}
+
+.hero-text {
+  color: var(--tfx-navy-blue);
+}
+
+.hero-text h1 {
+  color: var(--tfx-navy-blue);
+}
+
+.hero-text p {
+  color: #40566b;
+}
+
+/* Section headings */
+.section-heading h2,
+main h2 {
+  color: var(--tfx-navy-blue);
+}
+
+.section-heading p,
+main p {
+  color: #526779;
+}
+
+/* Marketplace purpose cards */
+.purpose-card {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(250, 248, 242, 0.96),
+      rgba(234, 247, 252, 0.82)
+    );
+  border: 1px solid rgba(11, 31, 58, 0.10);
+  border-radius: 14px;
+  box-shadow:
+    0 10px 28px rgba(11, 31, 58, 0.07),
+    0 3px 12px rgba(176, 141, 60, 0.05);
+}
+
+.purpose-card:hover {
+  border-color: rgba(176, 141, 60, 0.38);
+  box-shadow:
+    0 16px 36px rgba(11, 31, 58, 0.10),
+    0 5px 16px rgba(176, 141, 60, 0.08);
+}
+
+/* General marketplace cards */
+.card,
+.technology-card,
+.requirement-card,
+.tc-card,
+.buyer-section {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(250, 248, 242, 0.97),
+      rgba(234, 247, 252, 0.78)
+    );
+  border-color: rgba(11, 31, 58, 0.10);
+}
+
+/* Gold primary action */
+.button-gold {
+  background:
+    linear-gradient(
+      135deg,
+      #B08D3C,
+      #98782F
+    );
+  color: #FAF8F2;
+  border-color: #B08D3C;
+}
+
+.button-gold:hover {
+  background:
+    linear-gradient(
+      135deg,
+      #98782F,
+      #806326
+    );
+}
+
+/* Secondary actions */
+.button-outline,
+.button:not(.button-gold) {
+  background: rgba(250, 248, 242, 0.72);
+  color: var(--tfx-navy-blue);
+  border-color: rgba(11, 31, 58, 0.18);
+}
+
+.button-outline:hover,
+.button:not(.button-gold):hover {
+  background: rgba(234, 247, 252, 0.92);
+  border-color: rgba(176, 141, 60, 0.45);
+}
+
+/* T&C / Purpose pages */
+.tc-page,
+.purpose-page {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(234, 247, 252, 0.55),
+      rgba(250, 248, 242, 0.88)
+    );
+}
+
+.tc-card,
+.purpose-option {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(250, 248, 242, 0.97),
+      rgba(234, 247, 252, 0.78)
+    );
+}
+
+/* Form controls */
+input,
+select,
+textarea {
+  background: rgba(250, 248, 242, 0.92);
+  color: var(--tfx-navy-blue);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #7a8995;
+}
+
+/* Footer */
+.site-footer {
+  background:
+    linear-gradient(
+      135deg,
+      #0B1F3A,
+      #163451 55%,
+      #081C2F
+    );
+  color: #FAF8F2;
+  border-top: 2px solid #B08D3C;
+}
+
+.site-footer p {
+  color: rgba(250, 248, 242, 0.78);
+}
+
+.site-footer strong,
+.site-footer h1,
+.site-footer h2,
+.site-footer h3 {
+  color: #D8C28A;
+}
+
+.site-footer a {
+  color: #FAF8F2;
+}
+
+.site-footer a:hover {
+  color: #D8C28A;
+}
+
+/* Keep luxury header completely outside this design layer */
+
+/* Mobile */
+@media (max-width: 700px) {
+  .hero-content {
+    border-radius: 12px;
+  }
+
+  .purpose-card,
+  .card,
+  .technology-card,
+  .requirement-card,
+  .tc-card,
+  .buyer-section {
+    border-radius: 12px;
+  }
+}
+
+
+/* =========================================================
+   TECH FOUNDX — MARKETPLACE DESIGN TRANSFORMATION
+   DESIGN ONLY — HEADER UNTOUCHED
+   ========================================================= */
+
+/* ---------- Global marketplace surface ---------- */
+
+body {
+  background:
+    linear-gradient(
+      135deg,
+      #EAF7FC 0%,
+      #FAF8F2 45%,
+      #F3FAFD 100%
+    );
+}
+
+main {
+  min-height: 60vh;
+  background:
+    radial-gradient(
+      circle at 12% 12%,
+      rgba(135, 206, 235, 0.22),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 88% 70%,
+      rgba(176, 141, 60, 0.08),
+      transparent 28%
+    );
+}
+
+/* ---------- Home hero ---------- */
+
+.hero-content {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(250, 248, 242, 0.98),
+      rgba(234, 247, 252, 0.90)
+    );
+
+  border: 1px solid rgba(176, 141, 60, 0.24);
+  border-radius: 22px;
+
+  box-shadow:
+    0 24px 60px rgba(11, 31, 58, 0.12),
+    0 6px 22px rgba(176, 141, 60, 0.08);
+}
+
+.hero-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      180deg,
+      #87CEEB,
+      #B08D3C
+    );
+}
+
+.hero-text {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-text h1 {
+  color: #0B1F3A;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+.hero-text p {
+  color: #40566B;
+  line-height: 1.8;
+}
+
+/* ---------- Home actions ---------- */
+
+.hero-actions {
+  gap: 14px;
+}
+
+.hero-actions .button {
+  min-height: 46px;
+  border-radius: 9px;
+  padding-inline: 22px;
+}
+
+/* ---------- Marketplace sections ---------- */
+
+.purpose-section {
+  position: relative;
+}
+
+.section-heading h2 {
+  color: #0B1F3A;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.section-heading p {
+  color: #526779;
+}
+
+/* ---------- Purpose cards ---------- */
+
+.purpose-grid {
+  gap: 18px;
+}
+
+.purpose-card {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      #FAF8F2,
+      #EAF7FC
+    );
+
+  border: 1px solid rgba(11, 31, 58, 0.10);
+  border-radius: 16px;
+
+  box-shadow:
+    0 12px 30px rgba(11, 31, 58, 0.07);
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.purpose-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 3px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #87CEEB,
+      #B08D3C
+    );
+}
+
+.purpose-card:hover {
+  transform: translateY(-4px);
+
+  border-color:
+    rgba(176, 141, 60, 0.34);
+
+  box-shadow:
+    0 20px 40px rgba(11, 31, 58, 0.11),
+    0 5px 15px rgba(176, 141, 60, 0.07);
+}
+
+.purpose-card strong {
+  color: #0B1F3A;
+}
+
+.purpose-card span {
+  color: #526779;
+}
+
+/* ---------- General cards ---------- */
+
+.card,
+.technology-card,
+.requirement-card,
+.tc-card,
+.buyer-section {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(250, 248, 242, 0.98),
+      rgba(234, 247, 252, 0.86)
+    );
+
+  border: 1px solid rgba(11, 31, 58, 0.10);
+  border-radius: 16px;
+
+  box-shadow:
+    0 12px 32px rgba(11, 31, 58, 0.07);
+}
+
+/* ---------- Gold actions ---------- */
+
+.button-gold {
+  background:
+    linear-gradient(
+      135deg,
+      #B08D3C,
+      #98782F
+    );
+
+  color: #FAF8F2;
+  border: 1px solid #B08D3C;
+
+  box-shadow:
+    0 7px 20px rgba(176, 141, 60, 0.20);
+}
+
+.button-gold:hover {
+  background:
+    linear-gradient(
+      135deg,
+      #98782F,
+      #806326
+    );
+
+  box-shadow:
+    0 10px 25px rgba(176, 141, 60, 0.26);
+}
+
+/* ---------- Secondary actions ---------- */
+
+.button-outline,
+.button:not(.button-gold) {
+  color: #0B1F3A;
+  background: rgba(250, 248, 242, 0.78);
+  border-color: rgba(11, 31, 58, 0.18);
+}
+
+.button-outline:hover,
+.button:not(.button-gold):hover {
+  background: #EAF7FC;
+  border-color: rgba(176, 141, 60, 0.45);
+}
+
+/* ---------- Forms ---------- */
+
+input,
+select,
+textarea {
+  background: rgba(250, 248, 242, 0.94);
+  color: #0B1F3A;
+  border-color: rgba(11, 31, 58, 0.14);
+  border-radius: 9px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #B08D3C;
+  box-shadow:
+    0 0 0 3px rgba(135, 206, 235, 0.22);
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  background:
+    linear-gradient(
+      135deg,
+      #0B1F3A 0%,
+      #163451 52%,
+      #081C2F 100%
+    );
+
+  color: #FAF8F2;
+  border-top: 3px solid #B08D3C;
+
+  box-shadow:
+    0 -15px 40px rgba(11, 31, 58, 0.16);
+}
+
+.site-footer strong,
+.site-footer h1,
+.site-footer h2,
+.site-footer h3 {
+  color: #D8C28A;
+}
+
+.site-footer p {
+  color: rgba(250, 248, 242, 0.76);
+}
+
+.site-footer a {
+  color: #FAF8F2;
+}
+
+.site-footer a:hover {
+  color: #D8C28A;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 700px) {
+  .hero-content {
+    border-radius: 16px;
+  }
+
+  .hero-text h1 {
+    letter-spacing: -0.02em;
+  }
+
+  .purpose-card,
+  .card,
+  .technology-card,
+  .requirement-card,
+  .tc-card,
+  .buyer-section {
+    border-radius: 13px;
+  }
+}
+
+
+/* =========================================================
+   TECH FOUNDX — PREMIUM HOME VISUAL DESIGN
+   DESIGN ONLY — HEADER UNTOUCHED
+   ========================================================= */
+
+/* Main home canvas */
+.premium-home {
+  background:
+    linear-gradient(
+      135deg,
+      #EAF7FC 0%,
+      #FAF8F2 48%,
+      #F3FAFD 100%
+    );
+  color: #0B1F3A;
+}
+
+/* Main welcome area */
+.premium-welcome {
+  position: relative;
+  overflow: hidden;
+  padding:
+    clamp(70px, 9vw, 120px)
+    clamp(6%, 9vw, 11%);
+
+  background:
+    radial-gradient(
+      circle at 12% 20%,
+      rgba(135, 206, 235, 0.28),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 88% 75%,
+      rgba(176, 141, 60, 0.10),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      #EAF7FC,
+      #FAF8F2 55%,
+      #F4FBFD
+    );
+
+  border-bottom: 1px solid rgba(11, 31, 58, 0.08);
+}
+
+.premium-welcome::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      180deg,
+      #87CEEB,
+      #B08D3C
+    );
+}
+
+.premium-welcome::after {
+  content: "";
+  position: absolute;
+  right: -180px;
+  top: -180px;
+  width: 430px;
+  height: 430px;
+
+  border: 1px solid rgba(176, 141, 60, 0.18);
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 35px rgba(135, 206, 235, 0.035),
+    0 0 0 70px rgba(176, 141, 60, 0.025);
+}
+
+/* Content width */
+.premium-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1080px;
+}
+
+/* Brand treatment */
+.premium-brand {
+  display: inline-flex;
+  align-items: baseline;
+  margin-bottom: 24px;
+
+  font-size: clamp(30px, 5vw, 54px);
+  font-weight: 850;
+  letter-spacing: -0.045em;
+
+  text-shadow:
+    0 3px 16px rgba(11, 31, 58, 0.08);
+}
+
+.premium-tech {
+  color: #0B1F3A;
+}
+
+.premium-found {
+  color: #B08D3C;
+}
+
+.premium-x {
+  color: #87AFC4;
+}
+
+/* Eyebrow */
+.premium-eyebrow {
+  color: #B08D3C;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  margin-bottom: 18px;
+}
+
+/* Main welcome title */
+.premium-intro {
+  max-width: 920px;
+  margin: 0 0 22px;
+
+  color: #0B1F3A;
+  font-size: clamp(34px, 5.2vw, 64px);
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+/* Main description */
+.premium-description {
+  max-width: 850px;
+  margin: 0;
+
+  color: #526779;
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+/* Home actions */
+.premium-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.premium-actions .button {
+  min-height: 48px;
+  border-radius: 9px;
+}
+
+/* Welcome information sections */
+.premium-home .welcome-section {
+  position: relative;
+  padding:
+    clamp(65px, 8vw, 100px)
+    clamp(6%, 9vw, 11%);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(250, 248, 242, 0.96),
+      rgba(234, 247, 252, 0.72)
+    );
+
+  border-top: 1px solid rgba(11, 31, 58, 0.06);
+}
+
+.premium-home .welcome-section:nth-of-type(even) {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(234, 247, 252, 0.82),
+      rgba(250, 248, 242, 0.96)
+    );
+}
+
+.premium-home .welcome-section h2,
+.premium-home .welcome-section h3 {
+  color: #0B1F3A;
+}
+
+.premium-home .welcome-section p {
+  color: #526779;
+  line-height: 1.8;
+}
+
+/* Home headings */
+.premium-home h2 {
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+/* Home gold emphasis */
+.premium-home strong {
+  color: #0B1F3A;
+}
+
+/* Buttons */
+.premium-home .button-gold {
+  background:
+    linear-gradient(
+      135deg,
+      #B08D3C,
+      #98782F
+    );
+
+  color: #FAF8F2;
+  border: 1px solid #B08D3C;
+
+  box-shadow:
+    0 8px 22px rgba(176, 141, 60, 0.18);
+}
+
+.premium-home .button-gold:hover {
+  background:
+    linear-gradient(
+      135deg,
+      #98782F,
+      #806326
+    );
+}
+
+.premium-home .button-outline {
+  background: rgba(250, 248, 242, 0.72);
+  color: #0B1F3A;
+  border: 1px solid rgba(11, 31, 58, 0.20);
+}
+
+.premium-home .button-outline:hover {
+  background: #EAF7FC;
+  border-color: rgba(176, 141, 60, 0.45);
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .premium-brand {
+    font-size: 32px;
+  }
+
+  .premium-intro {
+    font-size: 36px;
+  }
+
+  .premium-description {
+    font-size: 15px;
+  }
+
+  .premium-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
