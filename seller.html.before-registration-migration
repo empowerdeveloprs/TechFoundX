@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sell Technology | TechFoundX</title>
+  <link rel="stylesheet" href="marketplace-portal.css">
+</head>
+<body>
+
+<header class="portal-header">
+  <a class="brand" href="marketplace.html">
+    <img src="assets/logo.PNG" alt="TechFoundX">
+    <div>
+      <strong>TechFoundX</strong>
+      <span>Technology Marketplace</span>
+    </div>
+  </a>
+</header>
+
+<main class="portal-main">
+  <span class="eyebrow">SELL / LIST TECHNOLOGY</span>
+  <h1>Bring your technology to the marketplace.</h1>
+
+  <p class="portal-intro">
+    Create a professional technology listing, provide commercial and
+    ownership information, complete verification and submit your product
+    for marketplace publication.
+  </p>
+
+  <div class="portal-actions">
+    <a class="primary" href="marketplace.html">Seller Registration</a>
+    <a href="marketplace.html">Marketplace Home</a>
+  </div>
+
+  <section class="portal-section">
+    <h2>Seller Area</h2>
+
+    <div class="portal-grid">
+      <article class="portal-card">
+        <span class="meta">01</span>
+        <h3>My Products</h3>
+        <p>Manage your technology products and listings.</p>
+      </article>
+
+      <article class="portal-card">
+        <span class="meta">02</span>
+        <h3>Create Listing</h3>
+        <p>Add technology identity, features, business information and commercial terms.</p>
+      </article>
+
+      <article class="portal-card">
+        <span class="meta">03</span>
+        <h3>Verification</h3>
+        <p>Submit ownership, technology and supporting information for review.</p>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer class="portal-footer">
+  <strong>TechFoundX</strong>
+  <span>Global Technology Marketplace</span>
+</footer>
+
+</body>
+</html>

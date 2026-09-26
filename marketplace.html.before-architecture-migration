@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechFoundX — Global Technology Marketplace</title>
+  <meta name="description" content="TechFoundX — A global marketplace for technology, software, digital products and artificial intelligence.">
+  <link rel="stylesheet" href="marketplace.css">
+</head>
+
+<body>
+
+<header class="market-header">
+  <a href="marketplace.html" class="market-brand">
+    <img src="assets/logo.PNG" alt="TechFoundX">
+    <div>
+      <strong>TechFoundX</strong>
+      <span>Global Technology Marketplace</span>
+    </div>
+  </a>
+</header>
+
+<main>
+
+  <section class="market-welcome">
+
+    <div class="welcome-copy">
+      <span class="eyebrow">GLOBAL TECHNOLOGY MARKETPLACE</span>
+
+      <h1>
+        A marketplace for
+        <span>technology and AI.</span>
+      </h1>
+
+      <p>
+        TechFoundX is a global marketplace where technology,
+        software, digital products, platforms and artificial intelligence
+        solutions can be discovered, presented, bought, licensed or offered
+        for commercial opportunity.
+      </p>
+
+      <p>
+        From software products and SaaS platforms to Artificial Intelligence,
+        APIs, cybersecurity, mobile applications, web applications,
+        automation and emerging technologies.
+      </p>
+    </div>
+
+    <div class="purpose-card">
+
+      <span class="eyebrow">WELCOME</span>
+
+      <h2>What brings you here?</h2>
+
+      <p>
+        Select your purpose to enter the appropriate marketplace area.
+      </p>
+
+      <div class="purpose-grid">
+
+        <a class="purpose-link" href="buyer.html">
+          <strong>Buy Technology</strong>
+          <span>
+            Find technology products and solutions for acquisition or use.
+          </span>
+        </a>
+
+        <a class="purpose-link" href="license.html">
+          <strong>License Technology</strong>
+          <span>
+            Find technology available for commercial licensing.
+          </span>
+        </a>
+
+        <a class="purpose-link" href="seller.html">
+          <strong>Sell / List Technology</strong>
+          <span>
+            Place software, AI or technology products in the marketplace.
+          </span>
+        </a>
+
+        <a class="purpose-link" href="partner.html">
+          <strong>Find a Partner</strong>
+          <span>
+            Find development, business, investment or distribution partners.
+          </span>
+        </a>
+
+        <a class="purpose-link" href="explore.html">
+          <strong>Explore Marketplace</strong>
+          <span>
+            Explore technology opportunities before choosing a specific purpose.
+          </span>
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+<footer class="market-footer">
+  <strong>TechFoundX</strong>
+  <span>Global Technology Marketplace</span>
+  <a href="legal/terms.html">Terms & Conditions</a>
+</footer>
+
+</body>
+</html>

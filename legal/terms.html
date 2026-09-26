@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms & Conditions | TechFoundX</title>
+  <link rel="stylesheet" href="../marketplace-portal.css">
+  <style>
+    .legal-document {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 32px;
+      border: 1px solid #dfe7ee;
+      border-radius: 14px;
+      line-height: 1.75;
+      white-space: normal;
+    }
+    .legal-document h1,
+    .legal-document h2,
+    .legal-document h3 {
+      color: #062b52;
+      margin-top: 1.5em;
+    }
+    .legal-document p {
+      margin: 0.8em 0;
+    }
+    .legal-document li {
+      margin: 0.35em 0;
+    }
+    .legal-document strong {
+      color: #062b52;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="portal-header">
+  <a class="brand" href="../marketplace.html">
+    <img src="../assets/logo.PNG" alt="TechFoundX">
+    <div>
+      <strong>TechFoundX</strong>
+      <span>Technology Marketplace</span>
+    </div>
+  </a>
+</header>
+
+<main class="portal-main">
+
+  <span class="eyebrow">LEGAL</span>
+
+  <h1>Terms & Conditions</h1>
+
+  <p class="portal-intro">
+    TechFoundX Marketplace — Master Terms & Conditions
+  </p>
+
+  <article id="terms-document" class="legal-document">
+    Loading Terms & Conditions…
+  </article>
+
+</main>
+
+<footer class="portal-footer">
+  <strong>TechFoundX</strong>
+  <span>Global Technology Marketplace</span>
+  <a href="../marketplace.html">Marketplace</a>
+</footer>
+
+<script>
+fetch("MASTER-TC.md")
+  .then(response => {
+    if (!response.ok) throw new Error("Terms document unavailable");
+    return response.text();
+  })
+  .then(markdown => {
+    const container = document.getElementById("terms-document");
+
+    const escapeHtml = text =>
+      text.replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+
+    let html = escapeHtml(markdown);
+
+    html = html
+      .replace(/^### (.*)$/gm, "<h3>$1</h3>")
+      .replace(/^## (.*)$/gm, "<h2>$1</h2>")
+      .replace(/^# (.*)$/gm, "<h1>$1</h1>")
+      .replace(/^\- (.*)$/gm, "<li>$1</li>")
+      .replace(/(<li>.*<\/li>\n?)+/g, "<ul>$&</ul>")
+      .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+      .replace(/\n\n+/g, "</p><p>")
+      .replace(/\n/g, "<br>");
+
+    container.innerHTML = "<p>" + html + "</p>";
+  })
+  .catch(() => {
+    document.getElementById("terms-document").innerHTML =
+      "<p>Terms & Conditions could not be loaded.</p>";
+  });
+</script>
+
+</body>
+</html>

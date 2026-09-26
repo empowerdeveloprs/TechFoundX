@@ -1,0 +1,221 @@
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
+import './App.css'
+import Explore from './pages/Explore/Explore'
+import TechnologyDetails from './pages/TechnologyDetails/TechnologyDetails'
+
+const categories = [
+  'AI & Machine Learning',
+  'Cybersecurity',
+  'FinTech',
+  'HealthTech',
+  'AgriTech',
+  'EdTech',
+  'Software & SaaS',
+  'Hardware & IoT',
+]
+
+const actions = [
+  {
+    title: 'Buy Technology',
+    text: 'Discover technology products, solutions and intellectual property available for acquisition.',
+  },
+  {
+    title: 'License Technology',
+    text: 'Find technologies you can license and commercialize for your market or organization.',
+  },
+  {
+    title: 'Sell Technology',
+    text: 'List your technology and reach buyers, licensees and commercial partners.',
+  },
+  {
+    title: 'Partner',
+    text: 'Connect with technology owners and organizations for strategic opportunities.',
+  },
+]
+
+function Home() {
+  return (
+    <main>
+      <section className="hero" id="explore">
+        <div className="hero-content">
+          <span className="eyebrow">GLOBAL TECHNOLOGY MARKETPLACE</span>
+
+          <h1>
+            Discover.
+            <br />
+            Connect.
+            <br />
+            Commercialize.
+          </h1>
+
+          <p>
+            A professional marketplace for discovering, buying, licensing,
+            selling and partnering around technology.
+          </p>
+
+          <div className="search-box">
+            <input
+              type="search"
+              placeholder="Search technologies, solutions, products..."
+              aria-label="Search technologies"
+            />
+            <Link className="button button-primary" to="/explore">
+              Search
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section marketplace-actions">
+        <div className="section-heading">
+          <span className="eyebrow">MARKETPLACE</span>
+          <h2>What are you looking to do?</h2>
+          <p>Choose the path that matches your technology objective.</p>
+        </div>
+
+        <div className="action-grid">
+          {actions.map((action) => (
+            <article className="action-card" key={action.title}>
+              <h3>{action.title}</h3>
+              <p>{action.text}</p>
+              <Link to="/explore">Explore →</Link>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section" id="categories">
+        <div className="section-heading">
+          <span className="eyebrow">DISCOVER</span>
+          <h2>Explore technology categories</h2>
+          <p>Find technologies across high-value and emerging sectors.</p>
+        </div>
+
+        <div className="category-grid">
+          {categories.map((category) => (
+            <Link className="category-card" to="/explore" key={category}>
+              <span>{category}</span>
+              <strong>→</strong>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="section featured">
+        <div className="section-heading">
+          <span className="eyebrow">FEATURED TECHNOLOGY</span>
+          <h2>Technology ready for discovery</h2>
+          <p>
+            Explore technology opportunities through the TechFoundX
+            marketplace.
+          </p>
+        </div>
+
+        <div className="featured-card">
+          <div>
+            <span className="badge">TECHNOLOGY MARKETPLACE</span>
+            <h3>Discover your next technology opportunity</h3>
+            <p>
+              Search available technologies and find the right path for
+              acquisition, licensing or partnership.
+            </p>
+          </div>
+
+          <Link className="button button-primary" to="/explore">
+            Explore Marketplace
+          </Link>
+        </div>
+      </section>
+
+      <section className="section how-it-works">
+        <div className="section-heading">
+          <span className="eyebrow">HOW IT WORKS</span>
+          <h2>From discovery to commercialization</h2>
+        </div>
+
+        <div className="steps">
+          <div>
+            <span>01</span>
+            <h3>Discover</h3>
+            <p>Find technologies matching your needs.</p>
+          </div>
+
+          <div>
+            <span>02</span>
+            <h3>Evaluate</h3>
+            <p>Review available technology information.</p>
+          </div>
+
+          <div>
+            <span>03</span>
+            <h3>Connect</h3>
+            <p>Engage with technology owners and partners.</p>
+          </div>
+
+          <div>
+            <span>04</span>
+            <h3>Commercialize</h3>
+            <p>Move suitable opportunities toward a transaction.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  )
+}
+
+function Layout() {
+  return (
+    <div className="app">
+      <header className="site-header">
+        <Link className="brand" to="/">
+          <span className="brand-name">TechFoundX</span>
+          <span className="brand-tagline">
+            Global Technology Marketplace
+          </span>
+        </Link>
+
+        <nav className="main-nav">
+          <Link to="/explore">Explore</Link>
+          <Link to="/explore">Categories</Link>
+          <a href="/#how-it-works">How It Works</a>
+          <Link to="/explore">Featured</Link>
+        </nav>
+
+        <div className="header-actions">
+          <button className="button button-secondary">Sign In</button>
+          <Link className="button button-primary" to="/explore">
+            Get Started
+          </Link>
+        </div>
+      </header>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/explore" element={<Explore />} />
+        <Route
+          path="/technology/:id"
+          element={<TechnologyDetails />}
+        />
+      </Routes>
+
+      <footer className="site-footer">
+        <div>
+          <strong>TechFoundX</strong>
+          <p>Global Technology Marketplace</p>
+        </div>
+
+        <p>Discover • Connect • Commercialize Technology</p>
+      </footer>
+    </div>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Layout />
+    </BrowserRouter>
+  )
+}
+
+export default App

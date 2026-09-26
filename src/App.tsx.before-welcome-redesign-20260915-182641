@@ -1,0 +1,524 @@
+import { BrowserRouter, Link, Route, Routes, useSearchParams } from 'react-router-dom'
+import Explore from './pages/Explore/Explore'
+import TechnologyDetails from './pages/TechnologyDetails/TechnologyDetails'
+import './App.css'
+
+function Home() {
+  return (
+    <main>
+      <section className="welcome-hero">
+        <div className="hero-content">
+          <div className="eyebrow">GLOBAL TECHNOLOGY MARKETPLACE</div>
+
+          <h1>
+            Discover. Connect.
+            <span> Commercialize.</span>
+          </h1>
+
+          <p className="hero-text">
+            TechFoundX connects technology buyers, sellers, licensors,
+            innovators, and potential partners through a professional,
+            structured technology marketplace.
+          </p>
+
+          <div className="hero-actions">
+            <Link className="button button-gold" to="/login?purpose=explore">
+              Explore Technologies
+            </Link>
+
+            <Link className="button button-outline" to="/login?purpose=explore">
+              Continue to Marketplace
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="welcome-section">
+        <div className="section-heading">
+          <div className="eyebrow">OUR SERVICES</div>
+          <h2>Technology opportunities, from discovery to connection.</h2>
+          <p>
+            Whether you want to buy, sell, license, or find the right
+            technology partner, TechFoundX provides a structured marketplace
+            environment for technology-related opportunities.
+          </p>
+        </div>
+
+        <div className="service-grid">
+          <Link to="/login?purpose=buy" className="service-card">
+            <span className="service-number">01</span>
+            <h3>Buy Technology</h3>
+            <p>
+              Discover technologies according to your technical,
+              commercial, and industry requirements.
+            </p>
+          </Link>
+
+          <Link to="/login?purpose=sell" className="service-card">
+            <span className="service-number">02</span>
+            <h3>Sell Technology</h3>
+            <p>
+              Present your technology through a structured submission and
+              provide relevant technical and commercial information.
+            </p>
+          </Link>
+
+          <Link to="/login?purpose=license" className="service-card">
+            <span className="service-number">03</span>
+            <h3>License Technology</h3>
+            <p>
+              Explore technology licensing opportunities and connect with
+              organizations seeking applicable solutions.
+            </p>
+          </Link>
+
+          <Link to="/login?purpose=partner" className="service-card">
+            <span className="service-number">04</span>
+            <h3>Find a Partner</h3>
+            <p>
+              Identify potential technical, manufacturing, commercial,
+              investment, research, and strategic partners.
+            </p>
+          </Link>
+
+          <Link to="/login?purpose=explore" className="service-card">
+            <span className="service-number">05</span>
+            <h3>Technology Discovery</h3>
+            <p>
+              Search across technology categories and discover opportunities
+              relevant to your objectives.
+            </p>
+          </Link>
+
+          <Link to="/login?purpose=explore" className="service-card">
+            <span className="service-number">06</span>
+            <h3>Due Diligence & Information</h3>
+            <p>
+              Access structured technology information according to the
+              marketplace access and requirements applicable to your account.
+            </p>
+          </Link>
+        </div>
+      </section>
+
+      <section className="purpose-section">
+        <div className="section-heading">
+          <div className="eyebrow">HOW CAN WE HELP?</div>
+          <h2>Choose what you want to do.</h2>
+          <p>
+            You can select your purpose first. TechFoundX will then guide you
+            through the appropriate marketplace requirements and information.
+          </p>
+        </div>
+
+        <div className="purpose-grid">
+          <Link to="/login?purpose=explore" className="purpose-card">
+            <strong>Explore Technologies</strong>
+            <span>View available technology opportunities →</span>
+          </Link>
+
+          <Link to="/login?purpose=sell" className="purpose-card">
+            <strong>Sell My Technology</strong>
+            <span>Submit your technology for marketplace consideration →</span>
+          </Link>
+
+          <Link to="/login?purpose=buy" className="purpose-card">
+            <strong>Buy Technology</strong>
+            <span>Tell us what technology you are looking for →</span>
+          </Link>
+
+          <Link to="/login?purpose=partner" className="purpose-card">
+            <strong>Find a Technology Partner</strong>
+            <span>Define your partnership requirements →</span>
+          </Link>
+        </div>
+      </section>
+
+      <section className="access-section">
+        <div>
+          <div className="eyebrow">CONTROLLED MARKETPLACE ACCESS</div>
+          <h2>Structured information. Purpose-driven access.</h2>
+          <p>
+            After registration, applicable Terms & Conditions and SOP
+            requirements will guide your access to marketplace information,
+            technology details, inquiries, and connections.
+          </p>
+        </div>
+
+        <Link className="button button-gold" to="/login">
+          Login / Create Account
+        </Link>
+      </section>
+    </main>
+  )
+}
+
+function LoginPage() {
+  const [searchParams] = useSearchParams()
+  const purpose = searchParams.get('purpose') || 'explore'
+
+  return (
+    <main className="auth-page">
+      <div className="auth-card">
+        <div className="eyebrow">TECH FOUNDX MARKETPLACE</div>
+
+        <h1>Login or Create Your Account</h1>
+        <p className="selected-purpose">
+          Selected service: <strong>{purpose}</strong>
+        </p>
+
+        <p className="auth-intro">
+          Access to the TechFoundX marketplace begins with a secure account
+          and completion of the applicable marketplace requirements.
+        </p>
+
+        <div className="auth-tabs">
+          <button className="auth-tab active" type="button">
+            Login
+          </button>
+          <button className="auth-tab" type="button">
+            Create Account
+          </button>
+        </div>
+
+        <form className="auth-form">
+          <label>
+            Email Address
+            <input
+              type="email"
+              placeholder="you@example.com"
+              autoComplete="email"
+            />
+          </label>
+
+          <label>
+            Password
+            <input
+              type="password"
+              placeholder="Enter your password"
+              autoComplete="current-password"
+            />
+          </label>
+
+          <div className="form-row">
+            <label className="check-row">
+              <input type="checkbox" />
+              <span>Remember me</span>
+            </label>
+
+            <a href="#forgot-password">Forgot password?</a>
+          </div>
+
+          <Link className="button button-gold auth-submit" to={`/tc-sop?purpose=${purpose}`}>
+            Continue
+          </Link>
+        </form>
+
+        <div className="auth-note">
+          <strong>Marketplace access</strong>
+          <span>
+            New users will complete registration, applicable Terms &
+            Conditions, SOP requirements, and purpose selection before
+            controlled marketplace access is granted.
+          </span>
+        </div>
+      </div>
+    </main>
+  )
+}
+
+function TCSOPPage() {
+  const [searchParams] = useSearchParams()
+  const purpose = searchParams.get('purpose') || 'explore'
+
+  return (
+    <main className="tc-page">
+      <div className="tc-header">
+        <div className="eyebrow">MARKETPLACE ACCESS REQUIREMENTS</div>
+
+        <h1>Terms, Conditions & Marketplace SOP</h1>
+
+        <p>
+          Please review the documents and requirements that govern use of the
+          TechFoundX technology marketplace.
+        </p>
+      </div>
+
+      <div className="tc-grid">
+        <article className="tc-card required">
+          <span className="tc-status">REQUIRED</span>
+          <h2>Terms & Conditions</h2>
+          <p>
+            General terms governing marketplace participation, information
+            use, inquiries, communications, and transactions.
+          </p>
+          <a href="/legal/terms.html">Review Document →</a>
+        </article>
+
+        <article className="tc-card required">
+          <span className="tc-status">REQUIRED</span>
+          <h2>Marketplace SOP</h2>
+          <p>
+            Procedures and rules for technology discovery, submission,
+            evaluation, communication, and marketplace participation.
+          </p>
+          <a href="/TechFoundX-MASTER-SOP-1.md">
+            Review SOP →
+          </a>
+        </article>
+
+        <article className="tc-card required">
+          <span className="tc-status">REQUIRED</span>
+          <h2>Technology Marketplace Rules</h2>
+          <p>
+            Requirements applicable to technology owners, buyers, licensors,
+            partners, and other marketplace participants.
+          </p>
+          <a href="/TechFoundX-MASTER-TC-4.md">
+            Review Rules →
+          </a>
+        </article>
+
+        <article className="tc-card">
+          <span className="tc-status optional">INFORMATION</span>
+          <h2>Privacy & Confidentiality</h2>
+          <p>
+            Information regarding responsible handling of account,
+            technology, business, and communication information.
+          </p>
+          <span className="document-coming">
+            Marketplace policy integration
+          </span>
+        </article>
+      </div>
+
+      <div className="tc-consent">
+        <label className="consent-row">
+          <input type="checkbox" />
+          <span>
+            I have reviewed the required TechFoundX marketplace documents and
+            understand that applicable requirements must be completed before
+            controlled marketplace access is available.
+          </span>
+        </label>
+
+        <Link className="button button-gold" to={`/purpose?purpose=${purpose}`}>
+          Continue to Purpose Selection
+        </Link>
+      </div>
+    </main>
+  )
+}
+
+function PurposePage() {
+  const purposes = [
+    "Buy Technology",
+    "Sell Technology",
+    "License Technology",
+    "Find a Technology Partner",
+    "Explore Technologies",
+    "Commercialize / Collaborate",
+  ]
+
+  return (
+    <main className="purpose-page">
+      <div className="section-heading">
+        <div className="eyebrow">YOUR MARKETPLACE PURPOSE</div>
+        <h1>What are you looking to do?</h1>
+        <p>
+          Select one or more purposes. TechFoundX will use your selections to
+          guide you toward the appropriate marketplace information and
+          requirements.
+        </p>
+      </div>
+
+      <div className="purpose-selection">
+        {purposes.map((purpose) => (
+          <label className="purpose-option" key={purpose}>
+            <input type="checkbox" />
+            <span>{purpose}</span>
+          </label>
+        ))}
+      </div>
+
+      <Link className="button button-gold" to="/explore">
+        Continue to Marketplace
+      </Link>
+    </main>
+  )
+}
+
+function Placeholder({ title }: { title: string }) {
+  return (
+    <main className="placeholder-page">
+      <section className="placeholder-card">
+        <span className="eyebrow">TECH FOUNDX</span>
+        <h1>{title}</h1>
+        <p>
+          This marketplace area is being prepared as part of the controlled
+          TechFoundX marketplace flow.
+        </p>
+        <Link className="button button-gold" to="/">
+          Back to Welcome
+        </Link>
+      </section>
+    </main>
+  )
+}
+
+
+function RequirementsPage() {
+  const requirements = [
+    {
+      title: 'Basic Profile',
+      text: 'Basic identity and profile information required for marketplace access.',
+      status: 'Required',
+    },
+    {
+      title: 'Marketplace Purpose',
+      text: 'Your selected marketplace purpose determines which requirements apply.',
+      status: 'Required',
+    },
+    {
+      title: 'Verification Information',
+      text: 'Additional information may be required before protected technology details are accessible.',
+      status: 'Required',
+    },
+    {
+      title: 'Additional Information',
+      text: 'Some information may become necessary depending on your selected purpose.',
+      status: 'Conditional',
+    },
+    {
+      title: 'Supporting Information',
+      text: 'Documents or supporting information may be requested for specific marketplace activities.',
+      status: 'Optional / Conditional',
+    },
+  ]
+
+  return (
+    <main className="requirements-page">
+      <section className="requirements-header">
+        <span className="eyebrow">CONTROLLED MARKETPLACE ACCESS</span>
+        <h1>Complete Your Requirements</h1>
+        <p>
+          Before accessing protected marketplace information, TechFoundX
+          requires the applicable basic information and verification steps.
+        </p>
+      </section>
+
+      <section className="requirements-card">
+        <div className="requirements-intro">
+          <h2>Marketplace Requirements</h2>
+          <p>
+            Requirements are applied according to your selected purpose.
+            Basic requirements are mandatory. Additional questions may appear
+            conditionally when required.
+          </p>
+        </div>
+
+        <div className="requirements-list">
+          {requirements.map((item) => (
+            <article className="requirement-item" key={item.title}>
+              <div>
+                <span className="requirement-status">{item.status}</span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
+
+              <span className="requirement-state">Pending</span>
+            </article>
+          ))}
+        </div>
+
+        <div className="requirements-notice">
+          <strong>Important</strong>
+          <p>
+            This is the initial marketplace requirements stage. Final
+            verification, account persistence and approval will be handled by
+            the TechFoundX backend when the account system is implemented.
+          </p>
+        </div>
+
+        <Link className="button button-gold" to="/explore">
+          Continue to Marketplace Preview
+        </Link>
+      </section>
+    </main>
+  )
+}
+
+function Layout() {
+  return (
+    <div className="app-shell">
+      <header className="site-header">
+        <Link className="brand" to="/">
+          <span className="brand-mark">TFX</span>
+          <span>
+            <strong>TECH FOUNDX</strong>
+            <small>Global Technology Marketplace</small>
+          </span>
+        </Link>
+
+        <nav className="site-nav">
+          <Link to="/login?purpose=explore">Explore</Link>
+          <Link to="/login?purpose=explore">Categories</Link>
+          <Link to="/login?purpose=sell">Sell Technology</Link>
+          <Link to="/login?purpose=partner">Partnership</Link>
+        </nav>
+
+        <Link className="header-login" to="/login">
+          Login
+        </Link>
+      </header>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/explore" element={<Explore />} />
+        <Route
+          path="/categories"
+          element={<Placeholder title="Technology Categories" />}
+        />
+        <Route
+          path="/seller"
+          element={<Placeholder title="Sell Your Technology" />}
+        />
+        <Route
+          path="/buyer"
+          element={<Placeholder title="Technology Buyer" />}
+        />
+        <Route
+          path="/partner"
+          element={<Placeholder title="Find a Technology Partner" />}
+        />
+        <Route
+          path="/technology/:id"
+          element={<TechnologyDetails />}
+        />
+        <Route path="/requirements" element={<RequirementsPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/tc-sop" element={<TCSOPPage />} />
+        <Route path="/purpose" element={<PurposePage />} />
+      </Routes>
+
+      <footer className="site-footer">
+        <div>
+          <strong>TECH FOUNDX</strong>
+          <p>Global Technology Marketplace</p>
+        </div>
+
+        <span>
+          © {new Date().getFullYear()} TechFoundX. All rights reserved.
+        </span>
+      </footer>
+    </div>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Layout />
+    </BrowserRouter>
+  )
+}
