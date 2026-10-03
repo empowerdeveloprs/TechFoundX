@@ -418,7 +418,7 @@ function TCSOPPage() {
           </p>
 
           <a
-            href="/legal/terms.html"
+            href="/legal/MASTER-TC.md"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -769,20 +769,54 @@ function RequirementsPage() {
         </div>
 
         <div className="requirements-actions">
-          {selectedPurposes.includes('buy') ? (
+          {selectedPurposes.includes('buy') && (
             <Link
               className="button button-gold"
               to={`/buyer?purpose=${encodeURIComponent(selectedPurposes.join(','))}`}
             >
               Continue to Buyer Requirements
             </Link>
-          ) : selectedPurposes.includes('explore') ? (
+          )}
+
+          {selectedPurposes.includes('sell') && (
+            <Link
+              className="button button-gold"
+              to={`/seller?purpose=${encodeURIComponent(selectedPurposes.join(','))}`}
+            >
+              Continue to Sell Technology
+            </Link>
+          )}
+
+          {selectedPurposes.includes('license') && (
+            <Link
+              className="button button-gold"
+              to={`/license?purpose=${encodeURIComponent(selectedPurposes.join(','))}`}
+            >
+              Continue to Licensing
+            </Link>
+          )}
+
+          {selectedPurposes.includes('partner') && (
+            <Link
+              className="button button-gold"
+              to={`/partner?purpose=${encodeURIComponent(selectedPurposes.join(','))}`}
+            >
+              Continue to Partnership
+            </Link>
+          )}
+
+          {selectedPurposes.includes('commercialize') && (
+            <Link
+              className="button button-gold"
+              to={`/commercialize?purpose=${encodeURIComponent(selectedPurposes.join(','))}`}
+            >
+              Continue to Commercialization
+            </Link>
+          )}
+
+          {selectedPurposes.includes('explore') && (
             <Link className="button button-gold" to="/explore">
               Continue to Marketplace
-            </Link>
-          ) : (
-            <Link className="button button-gold" to="/explore">
-              Continue
             </Link>
           )}
         </div>
@@ -831,6 +865,14 @@ function Layout() {
         <Route
           path="/partner"
           element={<Placeholder title="Find a Technology Partner" />}
+        />
+        <Route
+          path="/license"
+          element={<Placeholder title="License Technology" />}
+        />
+        <Route
+          path="/commercialize"
+          element={<Placeholder title="Commercialize / Collaborate" />}
         />
         <Route
           path="/technology/:id"
