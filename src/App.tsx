@@ -504,7 +504,9 @@ function PurposePage() {
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
 
-  const initialPurpose = searchParams.get('purpose') || 'explore'
+  const initialPurposes = (searchParams.get('purpose') || 'explore')
+    .split(',')
+    .map((value) => value.trim())
 
   const purposeOptions = [
     { value: 'buy', label: 'Buy Technology' },
@@ -516,9 +518,9 @@ function PurposePage() {
   ]
 
   const [selectedPurposes, setSelectedPurposes] = useState<string[]>(
-    purposeOptions.some((item) => item.value === initialPurpose)
-      ? [initialPurpose]
-      : []
+    initialPurposes.filter((value) =>
+      purposeOptions.some((item) => item.value === value)
+    )
   )
 
   const [error, setError] = useState('')
