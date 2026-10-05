@@ -1,13 +1,28 @@
 import { useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { buyerQuestions, buyerSections } from '../../data/buyerRequirements'
+import {
+  purposeLabels,
+  type MarketplacePurpose,
+} from '../../data/marketplaceRequirements'
 import './Buyer.css'
 
 type Answers = Record<string, string | boolean>
 
 function Buyer() {
+  const [searchParams] = useSearchParams()
+  const purpose = searchParams.get('purpose') || 'buy'
+
+  const selectedPurposes = purpose
+    .split(',')
+    .map((value) => value.trim())
+    .filter((value): value is MarketplacePurpose =>
+      Object.prototype.hasOwnProperty.call(purposeLabels, value)
+    )
+
   const [answers, setAnswers] = useState<Answers>({})
   const [submitted, setSubmitted] = useState(false)
+  const [missingFields, setMissingFields] = useState<string[]>([])
 
   const visibleQuestions = useMemo(() => {
     return buyerQuestions.filter((question) => {
@@ -37,10 +52,24 @@ function Buyer() {
       : Math.round((completedRequired / totalRequired) * 100)
 
   const updateAnswer = (id: string, value: string | boolean) => {
-    setAnswers((current) => ({
-      ...current,
-      [id]: value,
-    }))
+    setAnswers((current) => {
+      const next = {
+        ...current,
+        [id]: value,
+      }
+
+      buyerQuestions.forEach((question) => {
+        if (!question.condition || question.condition.field !== id) {
+          return
+        }
+
+        if (!question.condition.values.includes(String(value))) {
+          delete next[question.id]
+        }
+      })
+
+      return next
+    })
 
     setSubmitted(false)
   }
@@ -48,19 +77,23 @@ function Buyer() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    const missing = visibleQuestions.some((question) => {
-      if (!question.required) return false
+    const missing = visibleQuestions
+      .filter((question) => {
+        if (!question.required) return false
 
-      const value = answers[question.id]
+        const value = answers[question.id]
 
-      return value === undefined || value === '' || value === false
-    })
+        return value === undefined || value === '' || value === false
+      })
+      .map((question) => question.id)
 
-    if (missing) {
+    if (missing.length > 0) {
+      setMissingFields(missing)
       setSubmitted(false)
       return
     }
 
+    setMissingFields([])
     setSubmitted(true)
   }
 
@@ -70,6 +103,18 @@ function Buyer() {
         <span className="eyebrow">BUYER ONBOARDING</span>
 
         <h1>Tell Us What Technology You Need</h1>
+
+        <div className="buyer-purpose">
+          <span>Marketplace purpose:</span>{' '}
+          <strong>
+            {(selectedPurposes.length > 0
+              ? selectedPurposes
+              : (['buy'] as MarketplacePurpose[])
+            )
+              .map((item) => purposeLabels[item])
+              .join(' • ')}
+          </strong>
+        </div>
 
         <p>
           Tech FounDX uses progressive requirements. Information already
@@ -184,7 +229,6 @@ function Buyer() {
                               updateAnswer(question.id, event.target.checked)
                             }
                           />
-                          <span>{question.label}</span>
                         </span>
                       )}
                     </label>
@@ -194,6 +238,17 @@ function Buyer() {
             </section>
           )
         })}
+
+        {missingFields.length > 0 && (
+          <div className="buyer-error" role="alert">
+            <strong>Please complete the required fields.</strong>
+            <p>
+              {missingFields.length} required field
+              {missingFields.length === 1 ? '' : 's'} still need
+              {missingFields.length === 1 ? 's' : ''} an answer.
+            </p>
+          </div>
+        )}
 
         {submitted && (
           <div className="buyer-success" role="status">
@@ -209,7 +264,7 @@ function Buyer() {
         <div className="buyer-actions">
           <Link
             className="button button-outline"
-            to="/requirements?purpose=buy"
+            to={`/requirements?purpose=${encodeURIComponent(purpose)}`}
           >
             Back to Requirements
           </Link>

@@ -9,6 +9,16 @@
   margin: 0 auto 36px;
 }
 
+.buyer-purpose {
+  margin-top: 18px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.buyer-purpose strong {
+  color: var(--navy);
+}
+
 .buyer-header h1 {
   margin: 10px 0 14px;
   color: var(--navy-dark);
@@ -176,6 +186,19 @@
 .buyer-success p {
   margin: 7px 0 0;
   color: var(--muted);
+  line-height: 1.55;
+}
+
+.buyer-error {
+  margin: 24px 0;
+  padding: 18px;
+  border-left: 4px solid #a33;
+  background: #fff7f7;
+  color: #6f2222;
+}
+
+.buyer-error p {
+  margin: 7px 0 0;
   line-height: 1.55;
 }
 

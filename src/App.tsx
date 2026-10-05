@@ -107,10 +107,13 @@ function LoginPage() {
   const [searchParams] = useSearchParams()
   const purpose = searchParams.get('purpose') || 'explore'
   const mode = searchParams.get('mode') === 'register' ? 'register' : 'login'
+  const navigate = useNavigate()
 
   const [activeMode, setActiveMode] = useState(mode)
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
 
   return (
     <main className="auth-page">
@@ -145,7 +148,19 @@ function LoginPage() {
               </strong>
             </div>
 
-            <form className="auth-form registration-form">
+            <form
+              className="auth-form registration-form"
+              onSubmit={(event) => {
+                event.preventDefault()
+
+                if (password !== confirmPassword) {
+                  alert('Passwords do not match.')
+                  return
+                }
+
+                navigate(`/tc-sop?purpose=${purpose}`)
+              }}
+            >
 
               <div className="form-section-title">
                 ACCOUNT INFORMATION
@@ -191,6 +206,8 @@ function LoginPage() {
                       type={showPassword ? 'text' : 'password'}
                       placeholder="Create a password"
                       autoComplete="new-password"
+                      value={password}
+                      onChange={(event) => setPassword(event.target.value)}
                       required
                     />
                     <button
@@ -210,6 +227,8 @@ function LoginPage() {
                       type={showConfirmPassword ? 'text' : 'password'}
                       placeholder="Confirm your password"
                       autoComplete="new-password"
+                      value={confirmPassword}
+                      onChange={(event) => setConfirmPassword(event.target.value)}
                       required
                     />
                     <button
@@ -258,12 +277,12 @@ function LoginPage() {
                 </label>
               </div>
 
-              <Link
+              <button
                 className="button button-gold auth-submit"
-                to={`/tc-sop?purpose=${purpose}`}
+                type="submit"
               >
                 Create Account
-              </Link>
+              </button>
             </form>
 
             <div className="auth-switch">
