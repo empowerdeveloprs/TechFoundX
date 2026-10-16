@@ -3,6 +3,9 @@ import { BrowserRouter, Link, Route, Routes, useNavigate, useSearchParams } from
 import Explore from './pages/Explore/Explore'
 import TechnologyDetails from './pages/TechnologyDetails/TechnologyDetails'
 import Buyer from './pages/Buyer/Buyer'
+import Seller from './pages/Seller/Seller'
+import TechnologySubmission from './pages/TechnologySubmission/TechnologySubmission'
+import MarketplaceReview from './pages/MarketplaceReview/MarketplaceReview'
 import './App.css'
 import {
   marketplaceRequirements,
@@ -881,7 +884,15 @@ function Layout() {
         />
         <Route
           path="/seller"
-          element={<Placeholder title="Sell Your Technology" />}
+          element={<Seller />}
+        />
+        <Route
+          path="/technology-submission"
+          element={<TechnologySubmission />}
+        />
+        <Route
+          path="/marketplace-review"
+          element={<MarketplaceReview />}
         />
         <Route
           path="/partner"

@@ -1,0 +1,432 @@
+export type SellerQuestionType =
+  | 'text'
+  | 'email'
+  | 'tel'
+  | 'select'
+  | 'textarea'
+  | 'checkbox'
+
+export type SellerQuestionCondition = {
+  field: string
+  values: string[]
+}
+
+export interface SellerQuestion {
+  id: string
+  section: string
+  label: string
+  description?: string
+  type: SellerQuestionType
+  required: boolean
+  options?: string[]
+  condition?: SellerQuestionCondition
+}
+
+export const sellerSections = [
+  {
+    id: 'personal',
+    title: '01 — Personal Profile',
+    description: 'Basic information about the person using the marketplace account.',
+  },
+  {
+    id: 'business',
+    title: '02 — Business / Organization',
+    description: 'Business or organization information where applicable.',
+  },
+  {
+    id: 'experience',
+    title: '03 — Seller Experience',
+    description: 'Relevant technology development, ownership, selling and commercialization experience.',
+  },
+  {
+    id: 'authority',
+    title: '04 — Seller Authority',
+    description: 'Your relationship and authority regarding the technology you intend to list.',
+  },
+  {
+    id: 'ownership',
+    title: '05 — Ownership & Intellectual Property',
+    description: 'Ownership, intellectual property and third-party rights information.',
+  },
+  {
+    id: 'verification',
+    title: '06 — Verification',
+    description: 'Identity, business, authority and ownership evidence where applicable.',
+  },
+  {
+    id: 'commercial',
+    title: '07 — Commercial Profile',
+    description: 'Your preferred commercial activity, market and transaction position.',
+  },
+  {
+    id: 'communication',
+    title: '08 — Communication & Availability',
+    description: 'Preferred communication method and marketplace contact availability.',
+  },
+  {
+    id: 'declaration',
+    title: '09 — Declaration',
+    description: 'Confirmation of accuracy, authority and disclosure obligations.',
+  },
+] as const
+
+export const sellerQuestions: SellerQuestion[] = [
+  {
+    id: 'fullName',
+    section: 'personal',
+    label: 'Full Name',
+    type: 'text',
+    required: true,
+  },
+  {
+    id: 'email',
+    section: 'personal',
+    label: 'Email Address',
+    type: 'email',
+    required: true,
+  },
+  {
+    id: 'phone',
+    section: 'personal',
+    label: 'Phone Number',
+    type: 'tel',
+    required: true,
+  },
+  {
+    id: 'country',
+    section: 'personal',
+    label: 'Country / Region',
+    type: 'text',
+    required: true,
+  },
+  {
+    id: 'professionalRole',
+    section: 'personal',
+    label: 'Professional Role',
+    type: 'text',
+    required: true,
+  },
+  {
+    id: 'sellerType',
+    section: 'business',
+    label: 'Seller Type',
+    type: 'select',
+    required: true,
+    options: [
+      'Individual',
+      'Business',
+      'Technology Company',
+      'Manufacturer',
+      'Research / Academic',
+      'Organization',
+      'Authorized Representative',
+      'Other',
+    ],
+  },
+  {
+    id: 'businessName',
+    section: 'business',
+    label: 'Business / Organization Name',
+    type: 'text',
+    required: false,
+  },
+  {
+    id: 'legalEntityType',
+    section: 'business',
+    label: 'Legal Entity Type',
+    type: 'select',
+    required: false,
+    options: [
+      'Individual / Sole Proprietor',
+      'Partnership',
+      'Private Company',
+      'Public Company',
+      'Organization / Institution',
+      'Other',
+    ],
+  },
+  {
+    id: 'registrationCountry',
+    section: 'business',
+    label: 'Registration / Incorporation Country',
+    type: 'text',
+    required: false,
+  },
+  {
+    id: 'industry',
+    section: 'business',
+    label: 'Industry / Business Area',
+    type: 'text',
+    required: false,
+  },
+  {
+    id: 'businessWebsite',
+    section: 'business',
+    label: 'Business / Organization Website',
+    type: 'text',
+    required: false,
+  },
+  {
+    id: 'businessExperience',
+    section: 'business',
+    label: 'Relevant Business Experience',
+    type: 'textarea',
+    required: false,
+  },
+  {
+    id: 'technologyExperience',
+    section: 'experience',
+    label: 'Relevant Technology Development / Ownership Experience',
+    type: 'textarea',
+    required: true,
+  },
+  {
+    id: 'previousSales',
+    section: 'experience',
+    label: 'Previous Technology Sales / Licensing Experience',
+    type: 'select',
+    required: true,
+    options: ['Yes', 'No', 'Limited / Indirect'],
+  },
+  {
+    id: 'commercializationExperience',
+    section: 'experience',
+    label: 'Previous Technology Commercialization Experience',
+    type: 'textarea',
+    required: false,
+  },
+  {
+    id: 'targetMarkets',
+    section: 'experience',
+    label: 'Target Markets / Industries',
+    type: 'textarea',
+    required: true,
+  },
+  {
+    id: 'technologyRelationship',
+    section: 'authority',
+    label: 'What is your relationship to the technology?',
+    type: 'select',
+    required: true,
+    options: [
+      'Owner',
+      'Developer',
+      'Manufacturer',
+      'Co-owner',
+      'Authorized Representative',
+      'Licensor',
+      'Distributor / Reseller',
+      'Other Authorized Party',
+    ],
+  },
+  {
+    id: 'salesAuthority',
+    section: 'authority',
+    label: 'Do you have authority to sell or otherwise commercialize the technology?',
+    type: 'select',
+    required: true,
+    options: ['Yes', 'No', 'Subject to Additional Authorization'],
+  },
+  {
+    id: 'licensingAuthority',
+    section: 'authority',
+    label: 'Do you have authority to license the technology where applicable?',
+    type: 'select',
+    required: true,
+    options: ['Yes', 'No', 'Not Applicable', 'Subject to Additional Authorization'],
+  },
+  {
+    id: 'representationAuthority',
+    section: 'authority',
+    label: 'Are you authorized to represent or publish information about the technology?',
+    type: 'select',
+    required: true,
+    options: ['Yes', 'No', 'Subject to Additional Authorization'],
+  },
+  {
+    id: 'ownershipStatus',
+    section: 'ownership',
+    label: 'Technology Ownership Status',
+    type: 'select',
+    required: true,
+    options: [
+      'Fully Owned',
+      'Jointly Owned',
+      'Licensed Rights',
+      'Authorized to Sell / Represent',
+      'Third-Party Rights',
+      'Other',
+    ],
+  },
+  {
+    id: 'ipProtectionStatus',
+    section: 'ownership',
+    label: 'Intellectual Property Protection Status',
+    type: 'select',
+    required: true,
+    options: [
+      'No Formal Protection',
+      'Patent',
+      'Patent Application',
+      'Copyright',
+      'Trademark',
+      'Trade Secret / Confidential Know-how',
+      'Multiple Forms',
+      'Other',
+    ],
+  },
+  {
+    id: 'ipDetails',
+    section: 'ownership',
+    label: 'Intellectual Property Details',
+    description: 'Provide relevant ownership, registration, application or rights information where applicable.',
+    type: 'textarea',
+    required: false,
+  },
+  {
+    id: 'thirdPartyComponents',
+    section: 'ownership',
+    label: 'Does the technology contain third-party components or dependencies?',
+    type: 'select',
+    required: true,
+    options: ['Yes', 'No', 'Not Yet Determined'],
+  },
+  {
+    id: 'openSourceComponents',
+    section: 'ownership',
+    label: 'Does the technology contain open-source components?',
+    type: 'select',
+    required: true,
+    options: ['Yes', 'No', 'Not Yet Determined'],
+  },
+  {
+    id: 'existingRestrictions',
+    section: 'ownership',
+    label: 'Are there existing licenses, contractual restrictions or other rights affecting commercialization?',
+    type: 'select',
+    required: true,
+    options: ['Yes', 'No', 'Not Yet Determined'],
+  },
+  {
+    id: 'identityVerification',
+    section: 'verification',
+    label: 'Identity verification',
+    description: 'May be required according to marketplace activity and risk.',
+    type: 'checkbox',
+    required: false,
+  },
+  {
+    id: 'businessVerification',
+    section: 'verification',
+    label: 'Business / Entity verification',
+    description: 'May be required when acting on behalf of an organization.',
+    type: 'checkbox',
+    required: false,
+  },
+  {
+    id: 'authorityVerification',
+    section: 'verification',
+    label: 'Authority verification',
+    description: 'Evidence of authorization may be requested where the seller is not the direct owner.',
+    type: 'checkbox',
+    required: false,
+  },
+  {
+    id: 'ownershipVerification',
+    section: 'verification',
+    label: 'Ownership / IP verification',
+    description: 'Evidence may be requested before publication or transaction.',
+    type: 'checkbox',
+    required: false,
+  },
+  {
+    id: 'commercialActivity',
+    section: 'commercial',
+    label: 'Preferred Commercial Activity',
+    type: 'select',
+    required: true,
+    options: [
+      'Sell',
+      'License',
+      'Partnership',
+      'Investment',
+      'Joint Development',
+      'Open to Multiple Options',
+    ],
+  },
+  {
+    id: 'targetTerritory',
+    section: 'commercial',
+    label: 'Target Territory / Market',
+    type: 'text',
+    required: true,
+  },
+  {
+    id: 'commercialModel',
+    section: 'commercial',
+    label: 'Preferred Commercial Model',
+    type: 'select',
+    required: true,
+    options: [
+      'Direct Sale',
+      'License',
+      'Subscription',
+      'Royalty',
+      'Revenue Share',
+      'Partnership',
+      'Negotiable',
+      'Other',
+    ],
+  },
+  {
+    id: 'askingPricePreference',
+    section: 'commercial',
+    label: 'Asking Price / Commercial Position',
+    description: 'A genuine and supportable commercial position may be required when a listing type requires it.',
+    type: 'textarea',
+    required: false,
+  },
+  {
+    id: 'preferredContactMethod',
+    section: 'communication',
+    label: 'Preferred Contact Method',
+    type: 'select',
+    required: true,
+    options: ['Email', 'Phone', 'Marketplace Messaging', 'Multiple Options'],
+  },
+  {
+    id: 'availability',
+    section: 'communication',
+    label: 'Contact Availability',
+    type: 'textarea',
+    required: false,
+  },
+  {
+    id: 'dataProcessingAcknowledgement',
+    section: 'declaration',
+    label: 'I understand that verification information will be requested only where applicable and handled according to TechFoundX privacy, security and verification requirements.',
+    type: 'checkbox',
+    required: true,
+  },
+  {
+    id: 'thirdPartyDisclosureAcknowledgement',
+    section: 'declaration',
+    label: 'I will disclose relevant third-party, open-source, licensing and other rights information that may affect the technology or its commercialization.',
+    type: 'checkbox',
+    required: true,
+  },
+  {
+    id: 'ownershipDeclaration',
+    section: 'declaration',
+    label: 'I confirm that I own, control, or have the necessary authority to list and commercialize the technology information I submit.',
+    type: 'checkbox',
+    required: true,
+  },
+  {
+    id: 'accuracyDeclaration',
+    section: 'declaration',
+    label: 'I confirm that the information provided is accurate to the best of my knowledge.',
+    type: 'checkbox',
+    required: true,
+  },
+]

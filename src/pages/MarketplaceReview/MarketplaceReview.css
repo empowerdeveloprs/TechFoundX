@@ -1,0 +1,61 @@
+.marketplace-review-page {
+  min-height: 100vh;
+  padding: 48px 20px 72px;
+}
+
+.marketplace-review-card {
+  width: min(900px, 100%);
+  margin: 0 auto;
+  padding: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.marketplace-review-card h1 {
+  margin: 10px 0 16px;
+}
+
+.marketplace-review-card h2 {
+  margin: 30px 0 12px;
+}
+
+.marketplace-review-card p {
+  line-height: 1.65;
+}
+
+.marketplace-review-status {
+  margin-top: 28px;
+  padding: 18px 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.marketplace-review-status strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.marketplace-review-status p {
+  margin: 0;
+}
+
+.marketplace-review-card ul {
+  margin: 0;
+  padding-left: 22px;
+  line-height: 1.8;
+}
+
+.marketplace-review-actions {
+  margin-top: 32px;
+}
+
+.marketplace-review-back {
+  text-decoration: none;
+}
+
+@media (max-width: 640px) {
+  .marketplace-review-card {
+    padding: 28px 20px;
+  }
+}
